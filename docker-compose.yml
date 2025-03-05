@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  rent_bot:
+    build:
+      context: RentBot
+      dockerfile: Dockerfile
+    container_name: rentBot
+    volumes:
+      - ./rentBot:/app
+    networks:
+      - rentBotNetwork
+
+  tg_bot:
+    build:
+      context: TGBot
+      dockerfile: Dockerfile
+    container_name: tgBot
+    volumes:
+      - ./tgBot:/app
+    networks:
+      - rentBotNetwork
+
+networks:
+  rentBotNetwork:
+    driver: bridge
