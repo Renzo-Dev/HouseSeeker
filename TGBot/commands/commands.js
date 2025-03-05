@@ -4,7 +4,7 @@ import subscribe from './subscribe.js'
 const commands = [
 	{
 		command: 'start', action: (ctx) => {
-			return ctx.reply(start(ctx))
+			return start(ctx)
 		}
 	},
 	// {

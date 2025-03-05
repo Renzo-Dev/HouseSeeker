@@ -1,7 +1,7 @@
 // разные вспомогательные функции
 
 import axios from 'axios'
-import texts from './langLoadText.js'
+import messages from './langLoadMessages.js'
 
 // Очистка очереди обновлений перед запуском
 export async function clearPendingUpdates() {
@@ -16,5 +16,5 @@ export async function clearPendingUpdates() {
 
 export function getText(section, language) {
 	const userLang = language || 'en' // Дефолтный язык - английский
-	return texts[section][userLang] || texts[section]['en'] // Если язык не поддерживается, показываем английский
+	return messages[section][userLang] || messages[section]['en'] // Если язык не поддерживается, показываем английский
 }

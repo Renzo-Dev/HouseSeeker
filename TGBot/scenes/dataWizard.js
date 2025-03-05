@@ -7,13 +7,13 @@ import {exitScene} from './exitScene.js'
 const dataWizard = new Scenes.WizardScene(
 	'dataWizard',
 	async (ctx) => {
-		
+		ctx.scene.state.userData = {} // Создаём объект для хранения данных
 		await ctx.reply('📌 **Шаг 1/6**\n\n✏ Введите **Имя:**', {
 			parse_mode: 'Markdown',
 			reply_markup: {
 				keyboard: [['❌ Отменить']],
 				resize_keyboard: true,
-				one_time_keyboard: true
+				one_time_keyboard: false
 			}
 		})
 		return ctx.wizard.next()
@@ -27,7 +27,7 @@ const dataWizard = new Scenes.WizardScene(
 			reply_markup: {
 				keyboard: [['⬅ Назад', '❌ Отменить']],
 				resize_keyboard: true,
-				one_time_keyboard: true
+				one_time_keyboard: false
 			}
 		})
 		return ctx.wizard.next()
@@ -45,7 +45,7 @@ const dataWizard = new Scenes.WizardScene(
 			reply_markup: {
 				keyboard: [['⬅ Назад', '❌ Отменить']],
 				resize_keyboard: true,
-				one_time_keyboard: true
+				one_time_keyboard: false
 			}
 		})
 		return ctx.wizard.next()
@@ -63,7 +63,7 @@ const dataWizard = new Scenes.WizardScene(
 			reply_markup: {
 				keyboard: [['⬅ Назад', '❌ Отменить']],
 				resize_keyboard: true,
-				one_time_keyboard: true
+				one_time_keyboard: false
 			}
 		})
 		return ctx.wizard.next()
@@ -81,7 +81,7 @@ const dataWizard = new Scenes.WizardScene(
 			reply_markup: {
 				keyboard: [['⬅ Назад', '❌ Отменить']],
 				resize_keyboard: true,
-				one_time_keyboard: true
+				one_time_keyboard: false
 			}
 		})
 		return ctx.wizard.next()
@@ -99,7 +99,7 @@ const dataWizard = new Scenes.WizardScene(
 			reply_markup: {
 				keyboard: [['⬅ Назад', '❌ Отменить']],
 				resize_keyboard: true,
-				one_time_keyboard: true
+				one_time_keyboard: false
 			}
 		})
 		return ctx.wizard.next()
@@ -127,12 +127,16 @@ const dataWizard = new Scenes.WizardScene(
 			{
 				parse_mode: 'Markdown',
 				reply_markup: {
-					keyboard: [['⬅ Назад', '❌ Отменить', 'Подтвердить ✅']],
+					keyboard: [
+						['⬅ Назад', '❌ Отменить'],
+						['Подтвердить ✅']
+					],
 					resize_keyboard: true,
-					one_time_keyboard: true
+					one_time_keyboard: false
 				}
 			}
 		)
+		return ctx.wizard.next()
 	},
 	async (ctx) => {
 		if (ctx.message.text === '❌ Отменить') return exitScene(ctx)
@@ -140,7 +144,14 @@ const dataWizard = new Scenes.WizardScene(
 			// ПОДТВЕРЖДАЕМ И ПЕРЕХОДИМ НА СЛЕД ШАГ ЭТО ГЕНЕРАЦИЯ ССЫЛКИ ДЛЯ ОПЛАТЫ
 		}
 		if (ctx.message.text === '⬅ Назад') {
-			await ctx.reply('📌 **Шаг 6/6**\n\n🏠 Введите **количество комнат:**')
+			await ctx.reply('📌 **Шаг 6/6**\n\n🏠 Введите **количество комнат:**', {
+				parse_mode: 'Markdown',
+				reply_markup: {
+					keyboard: [['⬅ Назад', '❌ Отменить']],
+					resize_keyboard: true,
+					one_time_keyboard: false
+				}
+			})
 			return ctx.wizard.selectStep(6)
 		}
 	}
