@@ -16,6 +16,62 @@
 			"continue": "Weiter ➡️"
 		}
 	},
+	"subscribe": {
+		"ru": {
+			"steps": {
+				"1": "📌 **Шаг 1/7**\n\n✏ Введите **Имя:**",
+				"2": "📌 **Шаг 2/7**\n\n✏ Введите **Фамилию:**",
+				"3": "📌 **Шаг 3/7**\n\n📞 Введите **номер телефона:**",
+				"4": "📌 **Шаг 4/7**\n\n💰 Введите **минимальную цену аренды: 💶**",
+				"5": "📌 **Шаг 5/7**\n\n💰 Введите **максимальную цену аренды: 💶**",
+				"6": "📌 **Шаг 6/7**\n\n🏠 Введите **количество комнат:**",
+				"7": "📌 **Шаг 7/7**\n\n📝 Введите **описание (дополнительные пожелания):**",
+				"confirm": "📩 *Спасибо! Ваши данные сохранены.*"
+			},
+			"summary": "╔══════════════════╗\n   ✅ *ВАШИ ДАННЫЕ*  \n╚══════════════════╝\n\n👤 *Имя:* {name}\n🏷 *Фамилия:* {surname}\n📞 *Телефон:* {phone}\n💰 *Мин. цена:* {minPrice} ₽\n💰 *Макс. цена:* {maxPrice} ₽\n🏠 *Кол-во комнат:* {rooms}\n📝 *Описание:* {description}\n\n📩 *Спасибо! Ваши данные сохранены.*",
+			"buttons": {
+				"cancel": "❌ Отменить",
+				"back": "⬅ Назад",
+				"confirm": "Подтвердить ✅"
+			}
+		},
+		"en": {
+			"steps": {
+				"1": "📌 **Step 1/7**\n\n✏ Enter your **First Name:**",
+				"2": "📌 **Step 2/7**\n\n✏ Enter your **Last Name:**",
+				"3": "📌 **Step 3/7**\n\n📞 Enter your **Phone Number:**",
+				"4": "📌 **Step 4/7**\n\n💰 Enter **Minimum Rent Price: 💶**",
+				"5": "📌 **Step 5/7**\n\n💰 Enter **Maximum Rent Price: 💶**",
+				"6": "📌 **Step 6/7**\n\n🏠 Enter **Number of Rooms:**",
+				"7": "📌 **Step 7/7**\n\n📝 Enter **Description (additional preferences):**",
+				"confirm": "📩 *Thank you! Your data has been saved.*"
+			},
+			"summary": "╔══════════════════╗\n   ✅ *YOUR DATA*  \n╚══════════════════╝\n\n👤 *First Name:* {name}\n🏷 *Last Name:* {surname}\n📞 *Phone:* {phone}\n💰 *Min. Price:* {minPrice} $\n💰 *Max. Price:* {maxPrice} $\n🏠 *Rooms:* {rooms}\n📝 *Description:* {description}\n\n📩 *Thank you! Your data has been saved.*",
+			"buttons": {
+				"cancel": "❌ Cancel",
+				"back": "⬅ Back",
+				"confirm": "Confirm ✅"
+			}
+		},
+		"de": {
+			"steps": {
+				"1": "📌 **Schritt 1/7**\n\n✏ Geben Sie Ihren **Vornamen** ein:",
+				"2": "📌 **Schritt 2/7**\n\n✏ Geben Sie Ihren **Nachnamen** ein:",
+				"3": "📌 **Schritt 3/7**\n\n📞 Geben Sie Ihre **Telefonnummer** ein:",
+				"4": "📌 **Schritt 4/7**\n\n💰 Geben Sie die **Mindestmiete: 💶** ein:",
+				"5": "📌 **Schritt 5/7**\n\n💰 Geben Sie die **Maximalmiete: 💶** ein:",
+				"6": "📌 **Schritt 6/7**\n\n🏠 Geben Sie die **Anzahl der Zimmer** ein:",
+				"7": "📌 **Schritt 7/7**\n\n📝 Geben Sie eine **Beschreibung (zusätzliche Wünsche)** ein:",
+				"confirm": "📩 *Danke! Ihre Daten wurden gespeichert.*"
+			},
+			"summary": "╔══════════════════╗\n   ✅ *IHRE DATEN*  \n╚══════════════════╝\n\n👤 *Vorname:* {name}\n🏷 *Nachname:* {surname}\n📞 *Telefon:* {phone}\n💰 *Min. Preis:* {minPrice} €\n💰 *Max. Preis:* {maxPrice} €\n🏠 *Zimmer:* {rooms}\n📝 *Beschreibung:* {description}\n\n📩 *Danke! Ihre Daten wurden gespeichert.*",
+			"buttons": {
+				"cancel": "❌ Abbrechen",
+				"back": "⬅ Zurück",
+				"confirm": "Bestätigen ✅"
+			}
+		}
+	},
 	"help": {
 		"en": "🏡 **Welcome to RentBot!**\nOur service helps you quickly find and apply for rental apartments. We provide a convenient and reliable way to find your perfect home.\n\n💡 **How to get started:**\nTo subscribe to apartment rental listings and get access to the best offers, type **/subscribe**.\n\n🔒 **Please note!**\nRentBot is a paid service. A subscription is required to get full access to all features.",
 		"ru": "🏡 **Добро пожаловать в RentBot!**\nНаш сервис помогает быстро находить и подавать заявки на аренду квартир. Мы предлагаем удобный и надежный способ найти ваш идеальный дом.\n\n💡 **Как начать:**\nЧтобы подписаться на аренду квартир и получить доступ к лучшим предложениям, введите команду **/subscribe**.\n\n🔒 **Обратите внимание!**\nRentBot — это платный сервис. Для получения полного доступа к функционалу требуется подписка.",
