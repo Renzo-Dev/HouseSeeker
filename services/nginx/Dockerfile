@@ -1,18 +1,21 @@
-# Используем официальный образ Nginx
-FROM nginx:latest
+FROM nginx:1.25-alpine
 
-# Копируем конфигурацию Nginx в контейнер
-#COPY ./nginx.conf /etc/nginx/nginx.conf
+# Установка минимальных зависимостей и очистка
+RUN apk update && apk add --no-cache \
+    bash \
+    && rm -rf /var/cache/apk/*
 
-# Копируем публичную директорию Laravel в Nginx
-#COPY ./public /var/www/html
+# Удаление дефолтной конфигурации
+RUN rm /etc/nginx/conf.d/default.conf
 
-# Указываем рабочую директорию для Nginx
+# Копирование кастомной конфигурации
+#COPY nginx.conf /etc/nginx/nginx.conf
+
 WORKDIR /var/www/html
 
-# Открываем порты 80 и 443 (если нужен HTTPS)
-EXPOSE 80
-#EXPOSE 443
+# Проверка синтаксиса конфигурации при сборке
+RUN nginx -t
 
-# Запускаем Nginx
+EXPOSE 80
+
 CMD ["nginx", "-g", "daemon off;"]

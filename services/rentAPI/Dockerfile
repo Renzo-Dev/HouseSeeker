@@ -1,35 +1,41 @@
-# Используем официальный образ PHP с поддержкой FPM
-FROM php:8.2-fpm
+FROM php:8.2-fpm-alpine
 
-# Устанавливаем зависимости
-RUN apt-get update && apt-get install -y \
-    libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
-    zip \
+# Установка зависимостей
+RUN apk update && apk add --no-cache \
+    bash \
+    libpq-dev \
     unzip \
-    git \
     curl \
-    mc \
-    libonig-dev \
-    libxml2-dev \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+    git \
+    && docker-php-ext-install \
+        pdo \
+        pdo_pgsql \
+        opcache \
+    && rm -rf /var/cache/apk/*
 
-# Устанавливаем Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# Установка Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Устанавливаем Node.js и npm (если нужно)
-#RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-#    apt-get install -y nodejs
-
-# Копируем файлы Laravel
+# Рабочая директория
 WORKDIR /var/www/html
-#COPY . .
 
-# Устанавливаем зависимости Laravel
-#RUN composer install --no-dev --optimize-autoloader
+# Копирование кода приложения
+#COPY ./src /var/www/html
 
-# Настраиваем права
-#RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+# Установка зависимостей Laravel
+#RUN composer install --optimize-autoloader --no-dev
+
+# Настройка прав доступа
+#RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html/storage /var/www/html/bootstrap/cache
+
+# Копирование кастомного php.ini
+#COPY php.ini /usr/local/etc/php/conf.d/custom.ini
+
+# Оптимизация Laravel
+#RUN php artisan config:cache \
+#    && php artisan route:cache \
+#    && php artisan view:cache
+
+EXPOSE 9000
 
 CMD ["php-fpm"]

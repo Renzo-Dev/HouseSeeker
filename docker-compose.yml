@@ -25,6 +25,7 @@ services:
       - "9000:9000"
     volumes:
       - ./services/rentAPI/src:/var/www/html
+      - ./services/rentAPI/php.ini:/usr/local/etc/php/conf.d/custom.ini:ro
     networks:
       - rentBotNetwork
 
@@ -49,6 +50,8 @@ services:
       POSTGRES_DB: rentdb
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - rentBotNetwork
 
   redis:
     image: redis:alpine
