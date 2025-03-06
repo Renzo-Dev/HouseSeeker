@@ -29,7 +29,7 @@ commands.forEach(({command, action}) => {
 	})
 })
 
-console.log('✅ Команды проинициализированы\n')
+console.log('✅ Команды загружены\n')
 commands.forEach(({command, action}) => {
 	console.log(`👉 Команда: /${command}`)
 })

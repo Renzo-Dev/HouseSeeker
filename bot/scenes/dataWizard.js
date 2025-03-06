@@ -1,5 +1,6 @@
 import {Scenes} from 'telegraf'
 import {getText} from '../utils/helpers.js'
+import {exitScene} from './exitScene.js'
 
 const lang = 'ru'
 let msg = {}
