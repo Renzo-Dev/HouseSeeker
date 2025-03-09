@@ -1,0 +1,29 @@
+{
+	"start": {
+		"welcome": "<b>🏡 Welcome to House Seeker!</b>\n────────────────────────\n🔎 Our service helps you quickly find a rental apartment and submit an application in just a few steps!\n\n<b>📌 How to get started?</b>\n1️⃣ Enter the command <code>/subscribe</code> to subscribe.\n🔘 Or click <b>Continue</b> to subscribe.\n\n2️⃣ Provide your details:\n- 👤 <b>First and Last Name</b>\n- 💰 <b>Min. and Max. rental price</b>\n- 🏠 <b>Number of rooms</b>\n- 📞 <b>Phone number</b>\n- 📧 <b>Email</b>\n\n3️⃣ Pay for the subscription and get full access.\n✅ After payment, the bot will start working, and you will receive instructions.\n\n📩 <b>Have questions?</b> Contact support via <code>/support</code>",
+		"cancel": "❌ Cancel",
+		"continue": "Continue ➡️"
+	},
+	"subscribe": {
+		"steps": {
+			"1": "📌 **Step 1/8**\n\n✏ Enter your **First Name:**",
+			"2": "📌 **Step 2/8**\n\n✏ Enter your **Last Name:**",
+			"3": "📌 **Step 3/8**\n\n📞 Enter your **Phone Number:**",
+			"4": "📌 **Step 4/8**\n\n💰 Enter your **Minimum Rental Price: 💶**",
+			"5": "📌 **Step 5/8**\n\n💰 Enter your **Maximum Rental Price: 💶**",
+			"6": "📌 **Step 6/8**\n\n🏠 Enter the **Number of Rooms:**",
+			"7": "📌 **Step 7/8**\n\n🌍 Enter the **City where you are looking for an apartment:**",
+			"8": "📌 **Step 8/8**\n\n📝 Enter **Additional preferences or description:**",
+			"confirm": "📩 *Thank you! Your details have been saved.*"
+		},
+		"summary": "╔══════════════════╗\n   ✅ *YOUR DETAILS*  \n╚══════════════════╝\n\n👤 *First Name:* {name}\n🏷 *Last Name:* {surname}\n📞 *Phone:* {phone}\n💰 *Min. Price:* {minPrice} €\n💰 *Max. Price:* {maxPrice} €\n🏠 *Rooms:* {rooms}\n🌍 *City:* {city}\n📝 *Description:* {description}\n\n📩 *Thank you! Your details have been saved.*",
+		"buttons": {
+			"cancel": "❌ Cancel",
+			"back": "⬅ Back",
+			"confirm": "Confirm ✅"
+		}
+	},
+	"exit": {
+		"message": "🔄 To start over, simply enter the command: \n➡️ /start — to return to the main screen and restart the bot. \n\nThank you for using our service! 🙌"
+	}
+}

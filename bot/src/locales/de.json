@@ -1,0 +1,29 @@
+{
+	"start": {
+		"welcome": "<b>🏡 Willkommen bei House Seeker!</b>\n────────────────────────\n🔎 Unser Service hilft Ihnen, schnell eine Mietwohnung zu finden und Ihre Bewerbung in wenigen Schritten einzureichen!\n\n<b>📌 Wie startet man?</b>\n1️⃣ Geben Sie den Befehl <code>/subscribe</code> ein, um sich zu registrieren.\n🔘 Oder klicken Sie auf <b>Weiter</b>, um sich zu registrieren.\n\n2️⃣ Geben Sie Ihre Daten ein:\n- 👤 <b>Vor- und Nachname</b>\n- 💰 <b>Min. und Max. Mietpreis</b>\n- 🏠 <b>Anzahl der Zimmer</b>\n- 📞 <b>Telefonnummer</b>\n- 📧 <b>Email</b>\n\n3️⃣ Bezahlen Sie das Abonnement und erhalten Sie vollen Zugriff.\n✅ Nach der Zahlung beginnt der Bot zu arbeiten und Sie erhalten eine Anleitung.\n\n📩 <b>Haben Sie Fragen?</b> Kontaktieren Sie den Support über <code>/support</code>",
+		"cancel": "❌ Abbrechen",
+		"continue": "Weiter ➡️"
+	},
+	"subscribe": {
+		"steps": {
+			"1": "📌 **Schritt 1/8**\n\n✏ Geben Sie Ihren **Vornamen** ein:",
+			"2": "📌 **Schritt 2/8**\n\n✏ Geben Sie Ihren **Nachnamen** ein:",
+			"3": "📌 **Schritt 3/8**\n\n📞 Geben Sie Ihre **Telefonnummer** ein:",
+			"4": "📌 **Schritt 4/8**\n\n💰 Geben Sie Ihre **minimale Mietpreis: 💶** ein:",
+			"5": "📌 **Schritt 5/8**\n\n💰 Geben Sie Ihre **maximale Mietpreis: 💶** ein:",
+			"6": "📌 **Schritt 6/8**\n\n🏠 Geben Sie die **Anzahl der Zimmer** ein:",
+			"7": "📌 **Schritt 7/8**\n\n🌍 Geben Sie die **Stadt an, in der Sie eine Wohnung suchen:**",
+			"8": "📌 **Schritt 8/8**\n\n📝 Geben Sie **zusätzliche Wünsche oder eine Beschreibung** ein:",
+			"confirm": "📩 *Danke! Ihre Daten wurden gespeichert.*"
+		},
+		"summary": "╔══════════════════╗\n   ✅ *IHRE DATEN*  \n╚══════════════════╝\n\n👤 *Vorname:* {name}\n🏷 *Nachname:* {surname}\n📞 *Telefon:* {phone}\n💰 *Min. Preis:* {minPrice} €\n💰 *Max. Preis:* {maxPrice} €\n🏠 *Zimmer:* {rooms}\n🌍 *Stadt:* {city}\n📝 *Beschreibung:* {description}\n\n📩 *Danke! Ihre Daten wurden gespeichert.*",
+		"buttons": {
+			"cancel": "❌ Abbrechen",
+			"back": "⬅ Zurück",
+			"confirm": "Bestätigen ✅"
+		}
+	},
+	"exit": {
+		"message": "🔄 Um neu zu starten, geben Sie einfach den Befehl ein: \n➡️ /start — um zum Hauptbildschirm zurückzukehren und den Bot neu zu starten. \n\nDanke, dass Sie unseren Service genutzt haben! 🙌"
+	}
+}

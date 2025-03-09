@@ -1,17 +1,13 @@
+const UserService = require('../../services/UserService')
+
 async function start(ctx) {
-	fetch('http://host.docker.internal:80/api/checkUser', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify({
-			telegram_id: '12331241421'
-		})
-	}).then(res => {
-		if (res.status === 200) {
-			console.log(JSON.stringify(res.data))
-		}
-	})
+	if (await UserService.checkUserExists(ctx.from.id)) {
+		// делаем проверку на подписку
+		console.log('User exists')
+	} else {
+		// вызываем меню подписки
+		await ctx.scene.enter('startScene')
+	}
 }
 
 module.exports = start

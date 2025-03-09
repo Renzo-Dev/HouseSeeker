@@ -1,13 +1,19 @@
 const path = require('node:path')
 const fs = require('node:fs')
 const start = require('./handlers/start')
+const subscribe = require('./handlers/subscribe')
 
 
 class Commands {
 	commands = [
 		{
 			command: 'start', action: (ctx) => {
-				return ctx.reply(start(ctx))
+				return start(ctx)
+			}
+		},
+		{
+			command: 'subscribe', action: (ctx) => {
+				return subscribe(ctx)
 			}
 		}
 	]
@@ -25,11 +31,11 @@ class Commands {
 				this.bot.command(command, async (ctx) => {
 					await action(ctx)
 				})
-				console.log('✅ Commands loaded...')
 			})
+			console.log('\n✅ Commands loaded...')
 			this.bot.hears(/^\/sub.*/, (ctx) => {
 				ctx.command = 'subscribe'
-				this.bot.commands.find(({command}) => command === 'subscribe').action(ctx)
+				this.commands.find(({command}) => command === 'subscribe').action(ctx)
 			})
 		} catch (err) {
 			console.log('❌ Error loading commands...\n' + err.message)

@@ -9,6 +9,16 @@ class UserController extends Controller
 {
     public function checkUserExists(Request $request): JsonResponse
     {
-        return response()->json(['exists' => true]);
+        // проверка есть ли пользователь с таким telegram_id в бд
+        $user = false;
+        if ($user) {
+            return response()->json([
+                'exists' => true
+            ]);
+        }
+        return response()->json([
+            'exists' => false
+        ],
+        );
     }
 }
