@@ -5,7 +5,6 @@ async function start(ctx) {
 		// делаем проверку на подписку
 		console.log('User exists')
 	} else {
-		
 		// вызываем меню подписки
 		await ctx.scene.enter('startScene')
 	}
