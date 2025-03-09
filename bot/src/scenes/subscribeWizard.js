@@ -22,10 +22,6 @@ const subscribeScene = new Scenes.WizardScene(
 	// Last Name
 	async (ctx) => {
 		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
-		if (ctx.message.text === msg.buttons.back) {
-			await ctx.reply(msg.steps['1'])
-			return ctx.wizard.selectStep(1)
-		}
 		
 		ctx.scene.state.userData.name = ctx.message.text
 		await ctx.reply(msg.steps['2'], {
@@ -43,7 +39,14 @@ const subscribeScene = new Scenes.WizardScene(
 	async (ctx) => {
 		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
 		if (ctx.message.text === msg.buttons.back) {
-			await ctx.reply(msg.steps['1'])
+			await ctx.reply(msg.steps['1'], {
+				parse_mode: 'Markdown',
+				reply_markup: {
+					keyboard: [[msg.buttons.cancel]],
+					resize_keyboard: true,
+					one_time_keyboard: false
+				}
+			})
 			return ctx.wizard.selectStep(1)
 		}
 		
@@ -76,6 +79,7 @@ const subscribeScene = new Scenes.WizardScene(
 		})
 		return ctx.wizard.next()
 	},
+	
 	async (ctx) => {
 		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
 		if (ctx.message.text === msg.buttons.back) {
@@ -83,7 +87,7 @@ const subscribeScene = new Scenes.WizardScene(
 			return ctx.wizard.selectStep(3)
 		}
 		
-		ctx.scene.state.userData.minPrice = ctx.message.text
+		ctx.scene.state.userData.email = ctx.message.text
 		await ctx.reply(msg.steps['5'], {
 			parse_mode: 'Markdown',
 			reply_markup: {
@@ -94,6 +98,7 @@ const subscribeScene = new Scenes.WizardScene(
 		})
 		return ctx.wizard.next()
 	},
+	
 	async (ctx) => {
 		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
 		if (ctx.message.text === msg.buttons.back) {
@@ -101,7 +106,7 @@ const subscribeScene = new Scenes.WizardScene(
 			return ctx.wizard.selectStep(4)
 		}
 		
-		ctx.scene.state.userData.maxPrice = ctx.message.text
+		ctx.scene.state.userData.minPrice = ctx.message.text
 		await ctx.reply(msg.steps['6'], {
 			parse_mode: 'Markdown',
 			reply_markup: {
@@ -119,7 +124,7 @@ const subscribeScene = new Scenes.WizardScene(
 			return ctx.wizard.selectStep(5)
 		}
 		
-		ctx.scene.state.userData.rooms = ctx.message.text
+		ctx.scene.state.userData.maxPrice = ctx.message.text
 		await ctx.reply(msg.steps['7'], {
 			parse_mode: 'Markdown',
 			reply_markup: {
@@ -137,7 +142,7 @@ const subscribeScene = new Scenes.WizardScene(
 			return ctx.wizard.selectStep(6)
 		}
 		
-		ctx.scene.state.userData.city = ctx.message.text
+		ctx.scene.state.userData.rooms = ctx.message.text
 		await ctx.reply(msg.steps['8'], {
 			parse_mode: 'Markdown',
 			reply_markup: {
@@ -155,11 +160,30 @@ const subscribeScene = new Scenes.WizardScene(
 			return ctx.wizard.selectStep(7)
 		}
 		
+		ctx.scene.state.userData.city = ctx.message.text
+		await ctx.reply(msg.steps['9'], {
+			parse_mode: 'Markdown',
+			reply_markup: {
+				keyboard: [[msg.buttons.back, msg.buttons.cancel]],
+				resize_keyboard: true,
+				one_time_keyboard: false
+			}
+		})
+		return ctx.wizard.next()
+	},
+	async (ctx) => {
+		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
+		if (ctx.message.text === msg.buttons.back) {
+			await ctx.reply(msg.steps['8'])
+			return ctx.wizard.selectStep(8)
+		}
+		
 		ctx.scene.state.userData.description = ctx.message.text
 		
 		const summary = msg.summary
 			.replace('{name}', ctx.scene.state.userData.name || '❌')
 			.replace('{surname}', ctx.scene.state.userData.surname || '❌')
+			.replace('{email}', ctx.scene.state.userData.email || '❌')
 			.replace('{phone}', ctx.scene.state.userData.phone || '❌')
 			.replace('{minPrice}', ctx.scene.state.userData.minPrice || '❌')
 			.replace('{maxPrice}', ctx.scene.state.userData.maxPrice || '❌')
@@ -186,7 +210,7 @@ const subscribeScene = new Scenes.WizardScene(
 			// ПОДТВЕРЖДАЕМ И ПЕРЕХОДИМ НА СЛЕД ШАГ ЭТО ГЕНЕРАЦИЯ ССЫЛКИ ДЛЯ ОПЛАТЫ
 		}
 		if (ctx.message.text === msg.buttons.back) {
-			await ctx.reply(msg.steps['8'], {
+			await ctx.reply(msg.steps['9'], {
 				parse_mode: 'Markdown',
 				reply_markup: {
 					keyboard: [[msg.buttons.back, msg.buttons.cancel]],
@@ -194,7 +218,7 @@ const subscribeScene = new Scenes.WizardScene(
 					one_time_keyboard: false
 				}
 			})
-			return ctx.wizard.selectStep(8)
+			return ctx.wizard.selectStep(9)
 		}
 	}
 )

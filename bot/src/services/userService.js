@@ -6,7 +6,6 @@ class UserService {
 			const response = await axios.post('http://host.docker.internal:80/api/checkUser', {
 				telegram_id: telegram_id
 			})
-			console.log(response.data)
 			return !!response.data.exists
 		} catch (error) {
 			console.error('Ошибка при проверке пользователя:', error)

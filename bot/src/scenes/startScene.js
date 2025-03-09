@@ -22,7 +22,7 @@ const startScene = new Scenes.WizardScene(
 		msg = new Locales(ctx.from.language_code).getSection('start')
 		if (ctx.message.text === msg.cancel) return exitScene(ctx)
 		if (ctx.message.text === msg.continue || ctx.message.text === '/subscribe') {
-			await ctx.scene.enter('dataWizard')
+			await ctx.scene.enter('subscribeScene')
 		}
 	}
 )

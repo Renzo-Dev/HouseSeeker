@@ -12,7 +12,7 @@ async function exitScene(ctx) {
 	)
 	
 	// Покидаем сцену
-	// return ctx.scene.leave();
+	return ctx.scene.leave();
 }
 
 
