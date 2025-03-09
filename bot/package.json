@@ -1,0 +1,20 @@
+{
+	"name": "bot",
+	"version": "1.0.0",
+	"type": "commonjs",
+	"main": "main.js",
+	"scripts": {
+		"start": "node main.js",
+		"dev": "nodemon main.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"devDependencies": {
+		"axios": "^1.8.2",
+		"dotenv": "^16.4.7",
+		"telegraf": "^4.16.3"
+	}
+}
