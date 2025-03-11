@@ -1,14 +1,15 @@
-const {checkUserExists} = require('../../services/userService')
+const UserService = require('../../services/userService')
 
 async function subscribe(ctx) {
-	if (await checkUserExists(ctx.from.id)) {
-		// вызываем управление подпиской
-		await ctx.reply('УПРАВЛЕНИЕ ПОДПСИКОЙ')
+	let result = await UserService.checkUserExists(ctx.from.id)
+	console.log(result)
+	// делаем есть ли аккаунт и подписка
+	if (result.user && result.subscribe === true) {
+		await ctx.scene.enter('userManagerScene')
 	} else {
 		// вызываем меню подписки
 		await ctx.scene.enter('subscribeScene')
 	}
-	// await ctx.scene.enter('subscribeScene')
 }
 
 module.exports = subscribe

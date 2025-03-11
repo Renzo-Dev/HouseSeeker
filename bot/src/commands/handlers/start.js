@@ -1,9 +1,11 @@
 const UserService = require('../../services/UserService')
 
 async function start(ctx) {
-	if (await UserService.checkUserExists(ctx.from.id)) {
-		// делаем проверку на подписку
-		console.log('User exists')
+	let result = await UserService.checkUserExists(ctx.from.id)
+	console.log(result)
+	// делаем есть ли аккаунт и подписка
+	if (result.user && result.subscribe === true) {
+		await ctx.scene.enter('userManagerScene')
 	} else {
 		// вызываем меню подписки
 		await ctx.scene.enter('startScene')
