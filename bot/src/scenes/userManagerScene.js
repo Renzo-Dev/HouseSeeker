@@ -17,7 +17,8 @@ const userManagerScene = new Scenes.WizardScene(
 				one_time_keyboard: false
 			}
 		})
-		return ctx.wizard.next()
+		return ctx.scene.leave()
+		// return ctx.wizard.next()
 	},
 	async (ctx) => {
 		if (ctx.message.text === msg.buttons.edit_profile) return ctx.scene.enter('editDetailsScene')
