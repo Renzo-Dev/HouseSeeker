@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8d1fc0d-a70b-4a4c-8df5-b178df9e2747" name="Changes" comment="" />
+    <list default="true" id="a8d1fc0d-a70b-4a4c-8df5-b178df9e2747" name="Changes" comment="Add IDE-specific configuration and diagram backup files&#10;&#10;This commit includes IntelliJ IDEA project configuration files (vcs.xml, workspace.xml) and a draw.io diagram backup file. These files are useful for project setup, version control configuration, and preserving diagram progress.">
+      <change afterPath="$PROJECT_DIR$/rent-api/services/Apartment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bot/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/bot/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bot/src/commands/handlers/start.js" beforeDir="false" afterPath="$PROJECT_DIR$/bot/src/commands/handlers/start.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -228,6 +233,7 @@
       <workItem from="1741793170231" duration="4000" />
       <workItem from="1741793788680" duration="19000" />
       <workItem from="1741794087714" duration="38000" />
+      <workItem from="1741794244907" duration="972000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor user and subscription logic; enhance bot features.&#10;&#10;Streamlined user and subscription handling with new services, repositories, and API endpoints. Improved bot structure by adding user management scenes and enhanced start/subscribe command logic to integrate subscription verification. Removed unused migrations and refined user data models.">
       <option name="closed" value="true" />
@@ -253,7 +259,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741794113059</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add IDE-specific configuration and diagram backup files&#10;&#10;This commit includes IntelliJ IDEA project configuration files (vcs.xml, workspace.xml) and a draw.io diagram backup file. These files are useful for project setup, version control configuration, and preserving diagram progress.">
+      <option name="closed" value="true" />
+      <created>1741794269536</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1741794269536</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,6 +280,7 @@
     <MESSAGE value="Refactor user and subscription logic; enhance bot features.&#10;&#10;Streamlined user and subscription handling with new services, repositories, and API endpoints. Improved bot structure by adding user management scenes and enhanced start/subscribe command logic to integrate subscription verification. Removed unused migrations and refined user data models." />
     <MESSAGE value="fix" />
     <MESSAGE value="Remove Laravel Rent-API directory and update bot dependencies&#10;&#10;Deleted all files related to the Laravel Rent-API project. Updated bot dependencies by adding `node-fetch` and integrating functions for reCAPTCHA token handling in the start command handler." />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove Laravel Rent-API directory and update bot dependencies&#10;&#10;Deleted all files related to the Laravel Rent-API project. Updated bot dependencies by adding `node-fetch` and integrating functions for reCAPTCHA token handling in the start command handler." />
+    <MESSAGE value="Add IDE-specific configuration and diagram backup files&#10;&#10;This commit includes IntelliJ IDEA project configuration files (vcs.xml, workspace.xml) and a draw.io diagram backup file. These files are useful for project setup, version control configuration, and preserving diagram progress." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add IDE-specific configuration and diagram backup files&#10;&#10;This commit includes IntelliJ IDEA project configuration files (vcs.xml, workspace.xml) and a draw.io diagram backup file. These files are useful for project setup, version control configuration, and preserving diagram progress." />
   </component>
 </project>
