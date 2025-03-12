@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a8d1fc0d-a70b-4a4c-8df5-b178df9e2747" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/rent-api/composer.json</pharConfigPath>
+    <execution>
+      <executable path="composer" />
+    </execution>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Renzo-Dev&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Renzo-Dev/HouseSeeker.git&quot;,
+    &quot;accountId&quot;: &quot;4b9b582d-28b1-4518-901c-de20c78f2c1d&quot;
+  }
+}</component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\Program Files\php-8.2.27-nts-Win32-vs16-x64\php.exe">
+    <include_path>
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/mailer" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/polyfill-php83" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/polyfill-uuid" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/uid" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/fakerphp/faker" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/hamcrest/hamcrest-php" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/carbonphp/carbon-doctrine-types" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/fruitcake/php-cors" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/sebastian/cli-parser" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/sebastian/code-unit" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/sebastian/complexity" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/sebastian/lines-of-code" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/guzzlehttp/uri-template" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/nunomaduro/collision" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/nunomaduro/termwind" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/tijsverkoyen/css-to-inline-styles" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/dragonmantank/cron-expression" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/graham-campbell/result-type" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/composer" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/psr/clock" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/psy/psysh" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/filp/whoops" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/voku/portable-ascii" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/brick/math" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/nette/schema" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/nette/utils" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/league/commonmark" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/league/config" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/league/flysystem-local" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/league/mime-type-detection" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/league/uri" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/league/uri-interfaces" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/predis/predis" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/ramsey/collection" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/staabm/side-effects-detector" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/vlucas/phpdotenv" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/dflydev/dot-access-data" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/laravel/framework" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/laravel/pail" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/laravel/pint" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/laravel/prompts" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/laravel/sail" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/laravel/serializable-closure" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/laravel/tinker" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/mockery/mockery" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/clock" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/rent-api/vendor/symfony/http-kernel" />
+    </include_path>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2u8HtjLkRC2X1txojJTMUz6DTnA" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;PHP Script.ApartmentService.php.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;23.9.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.13.10&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Administrator/PhpstormProjects/HouseSeeker&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Programs\\JetBrains\\WebStorm 2024.3.4\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;redis&quot;,
+      &quot;postgresql&quot;
+    ]
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="Main" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner configuration_file="$PROJECT_DIR$/rent-api/phpunit.xml" scope="XML" use_alternative_configuration_file="true" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ApartmentService.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/rent-api/app/Services/ApartmentService.php">
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-WS-243.25659.40" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a8d1fc0d-a70b-4a4c-8df5-b178df9e2747" name="Changes" comment="" />
+      <created>1741623497148</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1741623497148</updated>
+      <workItem from="1741623498259" duration="4000" />
+      <workItem from="1741666464685" duration="29000" />
+      <workItem from="1741666527435" duration="18247000" />
+      <workItem from="1741690284575" duration="986000" />
+      <workItem from="1741693436839" duration="928000" />
+      <workItem from="1741705519110" duration="830000" />
+      <workItem from="1741706363048" duration="57000" />
+      <workItem from="1741706430597" duration="1059000" />
+      <workItem from="1741707503979" duration="5063000" />
+      <workItem from="1741760712114" duration="2000" />
+      <workItem from="1741762405059" duration="297000" />
+      <workItem from="1741763916488" duration="14814000" />
+      <workItem from="1741793170231" duration="4000" />
+      <workItem from="1741793788680" duration="19000" />
+      <workItem from="1741794087714" duration="38000" />
+    </task>
+    <task id="LOCAL-00001" summary="Refactor user and subscription logic; enhance bot features.&#10;&#10;Streamlined user and subscription handling with new services, repositories, and API endpoints. Improved bot structure by adding user management scenes and enhanced start/subscribe command logic to integrate subscription verification. Removed unused migrations and refined user data models.">
+      <option name="closed" value="true" />
+      <created>1741707548126</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1741707548126</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fix">
+      <option name="closed" value="true" />
+      <created>1741709561107</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1741709561107</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Remove Laravel Rent-API directory and update bot dependencies&#10;&#10;Deleted all files related to the Laravel Rent-API project. Updated bot dependencies by adding `node-fetch` and integrating functions for reCAPTCHA token handling in the start command handler.">
+      <option name="closed" value="true" />
+      <created>1741794113059</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1741794113059</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="nginx.conf" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Refactor user and subscription logic; enhance bot features.&#10;&#10;Streamlined user and subscription handling with new services, repositories, and API endpoints. Improved bot structure by adding user management scenes and enhanced start/subscribe command logic to integrate subscription verification. Removed unused migrations and refined user data models." />
+    <MESSAGE value="fix" />
+    <MESSAGE value="Remove Laravel Rent-API directory and update bot dependencies&#10;&#10;Deleted all files related to the Laravel Rent-API project. Updated bot dependencies by adding `node-fetch` and integrating functions for reCAPTCHA token handling in the start command handler." />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove Laravel Rent-API directory and update bot dependencies&#10;&#10;Deleted all files related to the Laravel Rent-API project. Updated bot dependencies by adding `node-fetch` and integrating functions for reCAPTCHA token handling in the start command handler." />
+  </component>
+</project>
