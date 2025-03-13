@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8d1fc0d-a70b-4a4c-8df5-b178df9e2747" name="Changes" comment="Add IDE-specific configuration and diagram backup files&#10;&#10;This commit includes IntelliJ IDEA project configuration files (vcs.xml, workspace.xml) and a draw.io diagram backup file. These files are useful for project setup, version control configuration, and preserving diagram progress.">
-      <change afterPath="$PROJECT_DIR$/rent-api/services/Apartment.js" afterDir="false" />
+    <list default="true" id="a8d1fc0d-a70b-4a4c-8df5-b178df9e2747" name="Changes" comment="Refactor bot start command and extract apartment services&#10;&#10;Moved apartment-related logic from the bot's start command handler to a dedicated service file for better modularity and code organization. Cleaned up unused code, including reCAPTCHA token fetching and prior apartment filter logic, ensuring a more streamlined bot flow. Updated Axios dependencies to the latest version (1">
+      <change afterPath="$PROJECT_DIR$/fakePage/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fakePage/server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rent-api/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/nginx.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bot/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/bot/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bot/src/commands/handlers/start.js" beforeDir="false" afterPath="$PROJECT_DIR$/bot/src/commands/handlers/start.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-api/services/Apartment.js" beforeDir="false" afterPath="$PROJECT_DIR$/rent-api/services/Apartment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/nginx/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/nginx/nginx.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/nginx/src/public/index.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +48,9 @@
     &quot;accountId&quot;: &quot;4b9b582d-28b1-4518-901c-de20c78f2c1d&quot;
   }
 }</component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/rent-api/package.json" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\Program Files\php-8.2.27-nts-Win32-vs16-x64\php.exe">
     <include_path>
       <path value="$PROJECT_DIR$/rent-api/vendor/symfony/mailer" />
@@ -169,6 +177,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;PHP Script.ApartmentService.php.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
@@ -191,6 +200,12 @@
     ]
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\PhpstormProjects\HouseSeeker\fakePage\public" />
+      <recent name="C:\Users\Administrator\PhpstormProjects\HouseSeeker\rent-api\services\recaptcha" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner configuration_file="$PROJECT_DIR$/rent-api/phpunit.xml" scope="XML" use_alternative_configuration_file="true" />
@@ -233,7 +248,11 @@
       <workItem from="1741793170231" duration="4000" />
       <workItem from="1741793788680" duration="19000" />
       <workItem from="1741794087714" duration="38000" />
-      <workItem from="1741794244907" duration="972000" />
+      <workItem from="1741794244907" duration="5325000" />
+      <workItem from="1741875566447" duration="5642000" />
+      <workItem from="1741881282619" duration="2491000" />
+      <workItem from="1741883803120" duration="1925000" />
+      <workItem from="1741886450529" duration="2151000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor user and subscription logic; enhance bot features.&#10;&#10;Streamlined user and subscription handling with new services, repositories, and API endpoints. Improved bot structure by adding user management scenes and enhanced start/subscribe command logic to integrate subscription verification. Removed unused migrations and refined user data models.">
       <option name="closed" value="true" />
@@ -267,7 +286,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741794269536</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Refactor bot start command and extract apartment services&#10;&#10;Moved apartment-related logic from the bot's start command handler to a dedicated service file for better modularity and code organization. Cleaned up unused code, including reCAPTCHA token fetching and prior apartment filter logic, ensuring a more streamlined bot flow. Updated Axios dependencies to the latest version (1.8.3) for improved package security.">
+      <option name="closed" value="true" />
+      <created>1741795406216</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1741795406216</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,6 +308,8 @@
     <MESSAGE value="fix" />
     <MESSAGE value="Remove Laravel Rent-API directory and update bot dependencies&#10;&#10;Deleted all files related to the Laravel Rent-API project. Updated bot dependencies by adding `node-fetch` and integrating functions for reCAPTCHA token handling in the start command handler." />
     <MESSAGE value="Add IDE-specific configuration and diagram backup files&#10;&#10;This commit includes IntelliJ IDEA project configuration files (vcs.xml, workspace.xml) and a draw.io diagram backup file. These files are useful for project setup, version control configuration, and preserving diagram progress." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add IDE-specific configuration and diagram backup files&#10;&#10;This commit includes IntelliJ IDEA project configuration files (vcs.xml, workspace.xml) and a draw.io diagram backup file. These files are useful for project setup, version control configuration, and preserving diagram progress." />
+    <MESSAGE value="Refactor bot start command and extract apartment services&#10;&#10;Moved" />
+    <MESSAGE value="Refactor bot start command and extract apartment services&#10;&#10;Moved apartment-related logic from the bot's start command handler to a dedicated service file for better modularity and code organization. Cleaned up unused code, including reCAPTCHA token fetching and prior apartment filter logic, ensuring a more streamlined bot flow. Updated Axios dependencies to the latest version (1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor bot start command and extract apartment services&#10;&#10;Moved apartment-related logic from the bot's start command handler to a dedicated service file for better modularity and code organization. Cleaned up unused code, including reCAPTCHA token fetching and prior apartment filter logic, ensuring a more streamlined bot flow. Updated Axios dependencies to the latest version (1" />
   </component>
 </project>

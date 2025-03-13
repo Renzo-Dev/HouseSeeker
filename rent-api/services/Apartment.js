@@ -1,36 +1,65 @@
-// getToken()
-// const location = await findLocation('Köln')
-// console.log(location)
-// let items = await filterApartments(await getApartments(location))
-// console.log(items.length)
+// const axios = require('axios')
+// (async () => {
+// 	let token = await getToken()
+// 	console.log('Token: ', token)
+// })()
 
-// Пример вызова функции
-// const requestData = JSON.stringify({
-// 	email: 'kovelenkodima@gmail.com',
-// 	salutation: 'm',
-// 	firstname: 'Dan',
-// 	lastname: 'Koshevoy',
-// 	message: 'Hi i need home',
-// 	captchaToken: '03AFcWeA5WRm9olUghd8Ue7prq6bQhLlc9YPTwlxU0ujSCPtlCwzvdBQJBQKQ0BJlPhYLRZG5_BreeWixoNLCtetYykVYY2ylhrFKjR5XLOWCTw7-IOu4Gw0Tt5aJSv55WfPFhkOYQPQZgLsaBHUzeM6I3XtTgABT89uVd34K_Aq-o1znr0r_lOoiFirqVXhRnEXA3rxLDGpYpXo2xlBZRVwZzLw1P1kwKYVmOic7VhMqwYCINi2uvPMp54AerU6L8O9BEZaX-SrYI7ylAQJMidi76h7n--4jVThejY9MIk9VBWBP4YboKKeJF2QCB57vE2lGop6NnHlzmWf0IOPzRoqcnSyGyIVtPU0OUa_sIzCrRJ3_KU1RTu9_2DjU1GWWDGNGVO5pFKAC6EHlc7Hkz6-CaeFSepfKbGYWArhbv6q2FGam2mhg_O8yWB1Sivd3EK6QZstCHxJJoAXqweYsAKxfGpTOBpQU03kw_rjn47vim4QRJZ6jOYc7MV3TRLX93EpM2kfRcJocFd-IrrtNlz-kX3DGYI3juFNSJGyeN4mF6EofeMEguqrhB5ANADywIbb-u4ACB2uj1GC0OH35FmnBs9hzBFFbfc6digG2ELoeX1ra5ao9gZl1RQNPccwMekdt0nQitPNDsjylEfRvZ3P3NWysHkQP3Z57QZhoqZ-W86ZYet-4eQB6XFYk__jbTd7vlDX6lGrqH4CbRbqZB2RCVYc-u5a_pHty_ACGWnZEtRp-MFHcT7LoNILoeOaKd1KNFX0oTlkDm4kl8cnzHf7L3jWTH8UCkbPiRVX_Vn_dRA9WMvnVIInx8isBbHQUSgBgXX99YZPpvNTJrMLV5grpgoV3fGcnkpPvQYCkVcjV7zBI6u_x9B0hHAwVLvcIB7VmiClUq5ZzoRfQHLmQVJyICnTJB3e1dYQcqSPqdDzpHqMVcwqaXzRvrFAPOuKaZxQk9y_xdf-Lp',
-// 	realEstateId: 23336272
-// })
+// let token = await getToken()
 
 async function getToken() {
+	const puppeteer = require('puppeteer')
+	// запускаем браузер
+	const browser = await puppeteer.launch()
+	const page = await browser.newPage()
+	
+	// переходим на страницу с recaptcha
+	await page.goto('http://localhost:3000')
+	// вставляем скрипт с reCaptcha на страницу
+	await page.addScriptTag({url: 'https://www.google.com/recaptcha/api.js?render=6LdqZvcZAAAAAO2mSKVf_YfxeogksV9ZXL8wG-uC'})
+	// Ждем, пока reCAPTCHA загрузится
+	await page.waitForFunction(() => typeof grecaptcha !== 'undefined')
+	let token = await page.evaluate(async () => {
+		return await grecaptcha.execute('6LdqZvcZAAAAAO2mSKVf_YfxeogksV9ZXL8wG-uC', {action: 'submit'})
+	})
+	
+	// Закрываем браузер
+	await browser.close()
+	return token
+}
+
+async function sendRequest(token) {
+	const axios = require('axios')
 	try {
-		const token = await getToken();
-		console.log("reCAPTCHA token:", token);
+		let SERVICE_URL = 'https://www.meinestadt.de/_re-service/contact'
+		console.log(SERVICE_URL)
+		let exposeeId = 22340244
 		
-		// Отправка на сервер
-		const response = await fetch('/api/verify-captcha', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ token }),
-		});
+		let formData = {
+			email: 'dankoshevoy@gmail.com',
+			salutation: 'm',
+			firstname: 'Dan',
+			lastname: 'Koshevoy',
+			message: 'Hi i need home',
+			captchaToken: token
+		}
 		
-		const result = await response.json();
-		console.log("Verification result:", result);
+		await axios.post(SERVICE_URL, {
+				...formData,
+				realEstateId: exposeeId
+			}, {
+				headers: {
+					'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					'Cookie': 'AMCVS_24D022CE527854F10A490D4D%40AdobeOrg=1; s_cc=true; _sp_v1_p=129; _sp_v1_data=1025453; _sp_su=false; c_tea=,aa,; c_te=1; c_te2=0; consentUUID=9b0bc621-6a80-46c0-8239-32817015d39e_41; consentDate=2025-03-11T17:06:50.355Z; cmp_ms_p=; _sp_v1_ss=1:H4sIAAAAAAAAAItWqo5RKimOUbKKxsrIAzEMamN1YpRSQcy80pwcILsErKC6lgwJJR1MK6FqBpFBRJgYo5SZl1kCZBmamxiaGxpZWFiSFR6xAKjJ7ZKEAQAA; ak_bmsc=AB1EDA754C7A021643F8BE96F8B8E524~000000000000000000000000000000~YAAQHLZlX/gpe4KVAQAAtrSjkBt/9hSIjUdk9zEgdcvm2fHXbEls3RZZWL4DGzoDML9ej/XMFDVHzGVAfFtfeGDp6PowCilo5GqnxL7ufkXmUIGRncYLz/InXg9LKsYg381da1byiKSiahMrvMLgt3Din+DO5PZtILhFx8eZV43hoAHjuNvYurgeFPFdUTvAc+Gv+Il795cP3ko5L1PfKOxAT5VxcX9V/fewT6mAc2pe96dePutrYy3Tp1px4liRZacKtAeymiMWaO4v0FWn8m0Qt1T1qvW+gziVWaGGYf71zTcK/4bTdb42uMxgLzTen9TIOR79+VbiLdlwl1bG/hG5blT1Cn8IYVZVgOa31603bOoNVR1I186gJYrTX6apu3ANFR9V2uS1EGv9vCnzWjkcjwTF5FTefZTs0xAPAfhccxh0xsv7kl+wtpRPUNbYhqRyQQ==; AMCV_24D022CE527854F10A490D4D%40AdobeOrg=-1124106680%7CMCIDTS%7C20161%7CMCMID%7C41441849371494397052549983309530771185%7CMCOPTOUT-1741895603s%7CNONE%7CvVersion%7C5.2.0%7CMCAID%7CNONE%7CMCAAMLH-1742493203%7C6%7CMCAAMB-1742493203%7Cj8Odv6LonN4r3an7LhD3WZrU1bUpAkFkkiY1ncBR96t2PTI; utag_main=v_id:0195862c4b3c000bfdf8aaf3272f0506f001a06700bd0$_sn:8$_se:3$_ss:0$_st:1741890203890$vapi_domain:meinestadt.de$ses_id:1741888401042%3Bexp-session$_pn:2%3Bexp-session; _rdt_uuid=1741713123654.b8bda591-ced9-4b34-b207-0dfcc3e9429d; s_sq=stepstonemeinestadtde%3D%2526c.%2526a.%2526activitymap.%2526page%253Dimmobilien_expose_eigeninventar%2526link%253DAnfrage%252520absenden%2526region%253Dmaincontent%2526pageIDType%253D1%2526.activitymap%2526.a%2526.c%2526pid%253Dimmobilien_expose_eigeninventar%2526pidt%253D1%2526oid%253DAnfrage%252520absenden%2526oidt%253D3%2526ot%253DSUBMIT'
+				}
+			}
+		).then(response => {
+			console.log(response.status, response.data)
+		})
+		console.log('Заявка отправлена')
 	} catch (error) {
-		console.error("Ошибка при получении токена reCAPTCHA:", error);
+		console.error('Ошибка:', error.message)
 	}
 }
 
@@ -104,4 +133,12 @@ async function getApartments(location) {
 	} catch (error) {
 		console.error('Ошибка запроса:', error.response ? error.response.data : error.message)
 	}
+}
+
+module.exports = {
+	findLocation,
+	filterApartments,
+	getApartments,
+	getToken,
+	sendRequest
 }
