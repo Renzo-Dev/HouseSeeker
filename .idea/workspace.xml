@@ -4,22 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8d1fc0d-a70b-4a4c-8df5-b178df9e2747" name="Changes" comment="Replace Nginx setup with Express server for re">
-      <change afterPath="$PROJECT_DIR$/services/RecaptchaServer/src/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/RecaptchaServer/src/server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/RentRequestor/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/RentRequestor/src/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/RentRequestor/src/services/RentRequestor.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/RentRequestor/src/services/database/models/SentRequests.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/RentRequestor/src/services/database/models/Subscribe.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/RentRequestor/src/services/database/models/User.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/RentRequestor/src/services/database/repository/databaseRequests.js" afterDir="false" />
+    <list default="true" id="a8d1fc0d-a70b-4a4c-8df5-b178df9e2747" name="Changes" comment="Replace Nginx setup with Express-based microservices.&#10;&#10;Replaced Nginx with modular Express services for better scalability and maintainability. Added a RentRequestor service, database models, and request handling logic. Updated Docker configurations and structured the project to support independent service deployments.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fakePage/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/services/RecaptchaServer/src/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fakePage/server.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/rent-api/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/rent-api/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/services/RecaptchaServer/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-api/services/Apartment.js" beforeDir="false" afterPath="$PROJECT_DIR$/rent-api/services/Apartment.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,7 +256,8 @@
       <workItem from="1741940763742" duration="337000" />
       <workItem from="1741941127309" duration="9352000" />
       <workItem from="1741961423483" duration="7173000" />
-      <workItem from="1741969425253" duration="3148000" />
+      <workItem from="1741969425253" duration="3344000" />
+      <workItem from="1741972801028" duration="3680000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor user and subscription logic; enhance bot features.&#10;&#10;Streamlined user and subscription handling with new services, repositories, and API endpoints. Improved bot structure by adding user management scenes and enhanced start/subscribe command logic to integrate subscription verification. Removed unused migrations and refined user data models.">
       <option name="closed" value="true" />
@@ -318,7 +307,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741888998665</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Replace Nginx setup with Express-based microservices.&#10;&#10;Replaced Nginx with modular Express services for better scalability and maintainability. Added a RentRequestor service, database models, and request handling logic. Updated Docker configurations and structured the project to support independent service deployments.">
+      <option name="closed" value="true" />
+      <created>1741972746422</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1741972746422</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -335,6 +332,7 @@
     <MESSAGE value="Refactor bot start command and extract apartment services&#10;&#10;Moved" />
     <MESSAGE value="Refactor bot start command and extract apartment services&#10;&#10;Moved apartment-related logic from the bot's start command handler to a dedicated service file for better modularity and code organization. Cleaned up unused code, including reCAPTCHA token fetching and prior apartment filter logic, ensuring a more streamlined bot flow. Updated Axios dependencies to the latest version (1" />
     <MESSAGE value="Replace Nginx setup with Express server for re" />
-    <option name="LAST_COMMIT_MESSAGE" value="Replace Nginx setup with Express server for re" />
+    <MESSAGE value="Replace Nginx setup with Express-based microservices.&#10;&#10;Replaced Nginx with modular Express services for better scalability and maintainability. Added a RentRequestor service, database models, and request handling logic. Updated Docker configurations and structured the project to support independent service deployments." />
+    <option name="LAST_COMMIT_MESSAGE" value="Replace Nginx setup with Express-based microservices.&#10;&#10;Replaced Nginx with modular Express services for better scalability and maintainability. Added a RentRequestor service, database models, and request handling logic. Updated Docker configurations and structured the project to support independent service deployments." />
   </component>
 </project>

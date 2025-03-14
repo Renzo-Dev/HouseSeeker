@@ -1,12 +1,43 @@
+(async () => {
+	const {getToken} = require('./services/Apartment')
+	const {sendRequest} = require('./services/Apartment')
+	const {findLocation} = require('./services/Apartment')
+	const {filterApartments} = require('./services/Apartment')
+	const {getApartments} = require('./services/Apartment')
+	let location = await findLocation('Köln')
+	console.log(location)
+	let apartments = await getApartments(location)
+	let filteredApartments = await filterApartments(apartments)
+	
+
+	// let token = await getToken()
+	// await sendRequest(token, filteredApartments[0].exposeeId)
+	
+	// filteredApartments.forEach(item => {
+	// 	console.log(item.exposeeId)
+	// })
+	
+	
+	
+	
+	for (let i = 13; i < 15; i++) {
+		let token = await getToken()
+		await sendRequest(token, filteredApartments[i].exposeeId)
+		console.log(`Sents: ${i}`)
+	}
+	// console.log(filteredApartments.length)
+})()
+
+
 // const axios = require('axios')
 
-(async () => {
-	const {sendRequest} = require('./services/Apartment')
-	const {getToken} = require('./services/Apartment')
-	let token = await getToken()
-	console.log('Token: ', token)
-	// await sendRequest(token)
-})()
+// (async () => {
+// 	const {sendRequest} = require('./services/Apartment')
+// 	const {getToken} = require('./services/Apartment')
+// 	let token = await getToken()
+// 	console.log('Token: ', token)
+// 	// await sendRequest(token)
+// })()
 
 // let token = await getToken()
 
