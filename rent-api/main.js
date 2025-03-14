@@ -5,7 +5,7 @@
 	const {getToken} = require('./services/Apartment')
 	let token = await getToken()
 	console.log('Token: ', token)
-	await sendRequest(token)
+	// await sendRequest(token)
 })()
 
 // let token = await getToken()
