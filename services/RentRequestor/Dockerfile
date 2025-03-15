@@ -3,6 +3,8 @@ FROM node:20-alpine
 
 # Обновляем систему и устанавливаем mc
 RUN apk update && apk upgrade && apk add --no-cache mc
+# Install Chromium
+RUN apk add chromium
 
 # Устанавливаем рабочую директорию
 WORKDIR /app
