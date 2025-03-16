@@ -5,26 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8d1fc0d-a70b-4a4c-8df5-b178df9e2747" name="Changes" comment="up">
-      <change afterPath="$PROJECT_DIR$/services/RentRequest/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.$digram.drawio.bkp" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/RentRequest/src/services/apartmentService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/RentRequest/src/services/authService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/RentRequest/src/services/requestService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-api/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-api/services/Apartment.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RecaptchaServer/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/services/RecaptchaServer/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RecaptchaServer/src/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/services/RecaptchaServer/src/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RecaptchaServer/src/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/services/RecaptchaServer/src/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RecaptchaServer/src/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RecaptchaServer/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RentRequestor/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RentRequestor/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RentRequestor/src/services/RentRequestor.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/services/RentRequestApi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RentRequestor/src/services/database/models/SentRequests.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/services/database/models/SentRequests.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RentRequestor/src/services/database/models/Subscribe.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/services/database/models/Subscribe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RentRequestor/src/services/database/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/services/database/models/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RentRequestor/src/services/database/repository/sent_requestsRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/services/database/repository/sent_requestsRepository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RentRequestor/src/services/database/repository/subscribeRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/services/database/repository/subscribeRepository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RentRequestor/src/services/database/repository/userRequests.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/services/database/repository/userRequests.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RentRequestor/src/services/getToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/services/getToken.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/RentRequest/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/RentRequest/src/services/RentRequestApi.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/RentRequest/src/services/getToken.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,32 +173,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Node.js.RentRequestor.js.executor": "Run",
-    "PHP Script.ApartmentService.php.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "javascript.nodejs.core.library.configured.version": "23.9.0",
-    "javascript.nodejs.core.library.typings.version": "22.13.10",
-    "last_opened_file_path": "C:/Users/Administrator/WebstormProjects/untitled",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "D:\\Programs\\JetBrains\\WebStorm 2024.3.4\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Node.js.RentRequestor.js.executor&quot;: &quot;Run&quot;,
+    &quot;PHP Script.ApartmentService.php.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;23.9.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.13.10&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Administrator/PhpstormProjects/HouseSeeker&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Programs\\JetBrains\\WebStorm 2024.3.4\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "redis",
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;redis&quot;,
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Administrator\PhpstormProjects\HouseSeeker\services\RentRequestor\src\services" />
@@ -291,6 +278,8 @@
       <workItem from="1742065157312" duration="8036000" />
       <workItem from="1742122956827" duration="1312000" />
       <workItem from="1742136882809" duration="10620000" />
+      <workItem from="1742148737258" duration="304000" />
+      <workItem from="1742158832775" duration="3794000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor user and subscription logic; enhance bot features.&#10;&#10;Streamlined user and subscription handling with new services, repositories, and API endpoints. Improved bot structure by adding user management scenes and enhanced start/subscribe command logic to integrate subscription verification. Removed unused migrations and refined user data models.">
       <option name="closed" value="true" />
@@ -364,7 +353,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742072699112</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="up">
+      <option name="closed" value="true" />
+      <created>1742149030544</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1742149030544</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

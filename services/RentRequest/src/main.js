@@ -1,13 +1,10 @@
 // setInterval(async () => {
-	// const sendApartmentRequest = require('./services/RentRequestApi')
-	// await sendApartmentRequest()
+// const sendApartmentRequest = require('./services/RentRequestApi')
+// await sendApartmentRequest()
 // }, 15000)
 
 (async () => {
-	const {sendApartmentRequest} = require('./services/RentRequestApi')
-// const getToken = require('./services/getToken')
-// let token = await getToken()
-// console.log(token)
+	const {sendApartmentRequest} = require('./services/apartmentService')
 	await sendApartmentRequest()
 })()
 
