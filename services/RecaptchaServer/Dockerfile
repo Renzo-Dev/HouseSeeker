@@ -1,23 +1,20 @@
-# Используем легковесный образ Node.js на Alpine
-FROM node:20-alpine
+# Используем официальный образ Node.js
+FROM node:20
 
-# Обновляем систему и устанавливаем mc
-RUN apk update && apk upgrade && apk add --no-cache mc
-
-# Устанавливаем рабочую директорию
+# Устанавливаем рабочую директорию в контейнере
 WORKDIR /app
 
-# Копируем package.json и package-lock.json (если есть)
+# Копируем package.json и package-lock.json
 #COPY package*.json ./
 
 # Устанавливаем зависимости
 #RUN npm install --only=production
 
-# Копируем исходный код приложения
+# Копируем все файлы проекта в контейнер
 #COPY . .
 
-# Открываем порт (например, 3000)
+# Указываем порт, который будет использовать контейнер
 EXPOSE 3000
 
 # Запускаем приложение
-CMD ["node", "server.js"]
+CMD ["node", "main.js"]
