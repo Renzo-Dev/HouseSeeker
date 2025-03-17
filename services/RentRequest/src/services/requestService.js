@@ -98,6 +98,11 @@ async function sendRequest(user, apartment) {
 		}
 		console.error(`Ошибка отправки заявки для объекта ${apartment.exposeeId}:`, error.message)
 		// // Логируем ошибку, но продолжаем обработку других заявок
+		
+		
+		//
+		//  ПЕРЕПИСАТЬ ЛОГИКУ CATCH
+		//
 	}
 }
 

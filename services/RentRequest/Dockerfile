@@ -48,3 +48,5 @@ RUN apt-get update && apt-get install -y \
 #COPY . /app
 WORKDIR /app
 CMD ["node", "main.js"]
+
+# Установить chroom и puppeteer NPX

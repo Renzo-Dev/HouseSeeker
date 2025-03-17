@@ -4,19 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8d1fc0d-a70b-4a4c-8df5-b178df9e2747" name="Changes" comment="up">
+    <list default="true" id="a8d1fc0d-a70b-4a4c-8df5-b178df9e2747" name="Changes" comment="Remove RecaptchaServer module and enhance apartment filtering&#10;&#10;The RecaptchaServer module was removed, simplifying the system. Apartment filtering logic was improved for better performance and unnecessary imports were cleaned up. Additionally, request handling has been optimized with better token management and logging for failed requests.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RecaptchaServer/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RecaptchaServer/src/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RecaptchaServer/src/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RecaptchaServer/src/public/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RentRequest/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RentRequest/src/services/apartmentService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/services/apartmentService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RentRequest/src/services/authService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/services/authService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RentRequest/src/services/database/repository/sent_requestsRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/services/database/repository/sent_requestsRepository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RentRequest/src/services/database/repository/subscribeRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/services/database/repository/subscribeRepository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RentRequest/src/services/requestService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/services/requestService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/RentRequest/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -290,6 +280,8 @@
       <workItem from="1742210697657" duration="4628000" />
       <workItem from="1742221460633" duration="6169000" />
       <workItem from="1742232636074" duration="11034000" />
+      <workItem from="1742243692635" duration="29000" />
+      <workItem from="1742243803453" duration="43000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor user and subscription logic; enhance bot features.&#10;&#10;Streamlined user and subscription handling with new services, repositories, and API endpoints. Improved bot structure by adding user management scenes and enhanced start/subscribe command logic to integrate subscription verification. Removed unused migrations and refined user data models.">
       <option name="closed" value="true" />
@@ -379,7 +371,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742162761361</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Remove RecaptchaServer module and enhance apartment filtering&#10;&#10;The RecaptchaServer module was removed, simplifying the system. Apartment filtering logic was improved for better performance and unnecessary imports were cleaned up. Additionally, request handling has been optimized with better token management and logging for failed requests.">
+      <option name="closed" value="true" />
+      <created>1742243710672</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1742243710672</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -399,6 +399,7 @@
     <MESSAGE value="Replace Nginx setup with Express-based microservices.&#10;&#10;Replaced Nginx with modular Express services for better scalability and maintainability. Added a RentRequestor service, database models, and request handling logic. Updated Docker configurations and structured the project to support independent service deployments." />
     <MESSAGE value="Replace Nginx with Express-based microservices&#10;&#10;Transitioned from Nginx to modular Express services for improved scalability and maintainability. Added a RentRequestor service with database models, request handling logic, and enhanced API functionality. Updated Docker configurations and structured the project for independent service deployments." />
     <MESSAGE value="up" />
-    <option name="LAST_COMMIT_MESSAGE" value="up" />
+    <MESSAGE value="Remove RecaptchaServer module and enhance apartment filtering&#10;&#10;The RecaptchaServer module was removed, simplifying the system. Apartment filtering logic was improved for better performance and unnecessary imports were cleaned up. Additionally, request handling has been optimized with better token management and logging for failed requests." />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove RecaptchaServer module and enhance apartment filtering&#10;&#10;The RecaptchaServer module was removed, simplifying the system. Apartment filtering logic was improved for better performance and unnecessary imports were cleaned up. Additionally, request handling has been optimized with better token management and logging for failed requests." />
   </component>
 </project>
