@@ -14,18 +14,6 @@ services:
     networks:
       - app_network
 
-  recaptcha_server:
-    container_name: recaptcha_server
-    build:
-      context: services/RecaptchaServer
-      dockerfile: Dockerfile
-    volumes:
-      - ./services/RecaptchaServer/src:/app
-    ports:
-      - "3000:3000"
-    networks:
-      - app_network
-
   tg_bot:
     build:
       context: bot

@@ -3,6 +3,7 @@
 // await sendApartmentRequest()
 // }, 15000)
 
+
 (async () => {
 	const {sendApartmentRequest} = require('./services/apartmentService')
 	await sendApartmentRequest()

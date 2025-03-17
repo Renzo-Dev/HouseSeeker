@@ -5,13 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8d1fc0d-a70b-4a4c-8df5-b178df9e2747" name="Changes" comment="up">
-      <change afterPath="$PROJECT_DIR$/services/RentRequest/src/services/apartmentService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/RentRequest/src/services/authService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/RentRequest/src/services/requestService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/RecaptchaServer/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/RecaptchaServer/src/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/RecaptchaServer/src/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/RecaptchaServer/src/public/index.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/services/RentRequest/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RentRequest/src/services/RentRequestApi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RentRequest/src/services/getToken.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/RentRequest/src/services/apartmentService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/services/apartmentService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/RentRequest/src/services/authService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/services/authService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/RentRequest/src/services/database/repository/sent_requestsRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/services/database/repository/sent_requestsRepository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/RentRequest/src/services/database/repository/subscribeRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/services/database/repository/subscribeRepository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/RentRequest/src/services/requestService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/services/requestService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -279,7 +284,12 @@
       <workItem from="1742122956827" duration="1312000" />
       <workItem from="1742136882809" duration="10620000" />
       <workItem from="1742148737258" duration="304000" />
-      <workItem from="1742158832775" duration="3794000" />
+      <workItem from="1742158832775" duration="4096000" />
+      <workItem from="1742207128417" duration="845000" />
+      <workItem from="1742208054640" duration="1805000" />
+      <workItem from="1742210697657" duration="4628000" />
+      <workItem from="1742221460633" duration="6169000" />
+      <workItem from="1742232636074" duration="11034000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor user and subscription logic; enhance bot features.&#10;&#10;Streamlined user and subscription handling with new services, repositories, and API endpoints. Improved bot structure by adding user management scenes and enhanced start/subscribe command logic to integrate subscription verification. Removed unused migrations and refined user data models.">
       <option name="closed" value="true" />
@@ -361,7 +371,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742149030544</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="up">
+      <option name="closed" value="true" />
+      <created>1742162761361</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1742162761361</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

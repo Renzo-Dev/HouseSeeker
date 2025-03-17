@@ -6,9 +6,21 @@ async function getAllSentRequests(user_id) {
 }
 
 async function addSentRequest(user_id, house_id, link) {
-
+	const knex = require('knex')(require('../../../knexfile').development)
+	try {
+		await knex('sent_requests').insert({
+			user_id,
+			house_id,
+			link
+		})
+		return true
+	} catch (error) {
+		console.error('Error adding sent request:', error)
+		throw error
+	}
 }
 
 module.exports = {
-	getAllSentRequests
+	getAllSentRequests,
+	addSentRequest
 }

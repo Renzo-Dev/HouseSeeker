@@ -5,6 +5,7 @@ async function addSubscribe(telegram_id) {
 async function getActiveSubscribes() {
 	const knex = require('knex')(require('../../../knexfile').development)
 	try {
+		// СДЕЛАТЬ ПРОВЕРКУ ДАТЫ ЧТО БЫ КОРРЕКТИРОВАТЬ ПОДПСИКУ
 		const subscribes = await knex('subscribes').where('status', 'active')
 		
 		if (subscribes) {

@@ -1,22 +1,25 @@
+const axios = require('axios')
+
 async function filterApartments(apartments, minPrice, maxPrice, minRooms, maxRooms) {
-	// Фильтруем квартиры по заданным критериям
+	// Фильтруем квартиры более оптимально (отсекаем сразу ненужные записи)
 	return apartments.filter(item => {
-		// Исключаем квартиры, которые подходят только для WG (общего жилья), если это явно указано
-		if (!item.equipment?.includes('WG geeignet') || item.equipmentAsString?.includes('WG geeignet')) {
-			// Исключаем квартиры, заголовок которых содержит слово "Tauschwohnung" (обменная квартира)
-			if (!item.title.toLowerCase().includes('tauschwohnung')) {
-				// Проверяем, чтобы цена и количество комнат соответствовали указанным диапазонам
-				return item.priceRaw >= minPrice && item.priceRaw <= maxPrice &&
-					item.rooms >= minRooms && item.rooms <= maxRooms
-			}
+		if (
+			!item.equipment?.includes('WG geeignet') &&
+			!item.equipmentAsString?.includes('WG geeignet') &&
+			!item.title?.toLowerCase().includes('tauschwohnung') &&
+			item.priceRaw >= minPrice &&
+			item.priceRaw <= maxPrice &&
+			item.rooms >= minRooms &&
+			item.rooms <= maxRooms
+		) {
+			return true
 		}
-		// Если условия не выполнены, исключаем квартиру из результатов
 		return false
 	})
 }
 
+
 async function getApartments(location, cookie) {
-	const axios = require('axios')
 	const url = 'http://www.meinestadt.de/_re-service/get-items'
 	
 	const headers = {
@@ -32,7 +35,7 @@ async function getApartments(location, cookie) {
 		lat: location.latitude,
 		lng: location.longitude,
 		page: 1,
-		pageSize: 2000000,
+		pageSize: 900000,
 		sr: '20',
 		sort: 'distance',
 		etype: 1,
@@ -45,19 +48,18 @@ async function getApartments(location, cookie) {
 	
 	try {
 		const response = await axios.post(url, data, {headers})
-		return response.data.items
+		return response.data.items || []
 	} catch (error) {
 		console.error('Ошибка запроса:', error.response ? error.response.data : error.message)
+		return []
 	}
+	
 }
 
 async function getLocationForUser(query) {
-	const axios = require('axios')
 	const url = 'https://www.meinestadt.de/_home-service/citySearch'
-	const params = {
-		query: query,
-		excludeTypeLevel: 'REGIONS'
-	}
+	const params = {query, excludeTypeLevel: 'REGIONS'}
+	
 	const headers = {
 		'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
 		'Accept': 'application/json'
@@ -79,9 +81,9 @@ async function getLocationForUser(query) {
 			location: locations.find(location => location.name === query) || locations[0],
 			cookie: cookies
 		}
-		
 	} catch (error) {
 		console.error('Ошибка запроса:', error.response ? error.response.data : error.message)
+		return null
 	}
 }
 
@@ -89,7 +91,6 @@ async function sendApartmentRequest() {
 	const {getActiveSubscribes} = require('./database/repository/subscribeRepository')
 	const {getUserByUserId} = require('./database/repository/userRequests')
 	const {getAllSentRequests} = require('./database/repository/sent_requestsRepository')
-	const getToken = require('./authService')
 	const sendRequest = require('./requestService')
 
 // делаем запрос в бд
@@ -100,46 +101,51 @@ async function sendApartmentRequest() {
 		console.log('В базе данных нету подписок')
 		return
 	}
-	let users = []
-	// получаем пользователей по подпискам
-	for (let subscribe of subscribes) {
-		users = await Promise.all(subscribes.map(subscribe => getUserByUserId(subscribe.user_id)))
-	}
 	
-	// получаем локацию (город) для пользователя
+	// Получаем пользователей по подпискам (параллельно)
+	const users = await Promise.all(
+		subscribes.map(subscribe => getUserByUserId(subscribe.user_id))
+	)
+
+	// Обрабатываем пользователей (параллелим основной поток)
 	await Promise.all(users.map(async (user) => {
+		if (!user) return
+		console.log(user)
 		// получаем локацию соответствии с городом
 		let locationData = await getLocationForUser(user.city)
 		
-		// получаем список отправленных квартир пользователем
+		// Получаем ранее отправленные квартиры пользователем
 		let sentApartments = await getAllSentRequests(user.id)
+		
 		// получаем список квартир с сайта, фильтруем квартиры в соответствии с данными пользователя
-		let apartments = await filterApartments(await getApartments(locationData.location, locationData.cookie), user.min_price, user.max_price, user.min_rooms, user.max_rooms)
+		// let apartments = await filterApartments(await getApartments(locationData.location, locationData.cookie), user.min_price, user.max_price, user.min_rooms, user.max_rooms)
 		
-		// // отправляем заявки (проверяем квартиру со списком квартир отправленных пользователем )
-		let token = await getToken()
-		// console.log(token)
-		await sendRequest(token, user, apartments[15].exposeeId)
+		// загружаем и фильтруем квартиры
+		const apartments = await getApartments(locationData.location, locationData.cookie)
+		const filtered = await filterApartments(apartments, user.min_price, user.max_price, user.min_rooms, user.max_rooms)
 		
+		
+		// исключаем уже отправленные квартиры
+		const newApartments = filtered.filter(apartment => {
+			const alreadySent = sentApartments.some(sent => sent.house_id === apartment.exposeeId)
+			return !alreadySent
+		})
+		console.log(newApartments.length)
+		// отправляем новые квартиры
+		await Promise.all(newApartments.map(apartment => sendRequest(user,apartment)))
+		
+		// // const {addSentRequest} = require('./database/repository/sent_requestsRepository')
+		// // await addSentRequest(user.id, apartments[12].exposeeId, apartments[12].detailUrl)
+		// console.log(apartments.length)
+		// // отправляем заявки (проверяем квартиру со списком квартир отправленных пользователем)
 		// await Promise.all(apartments.map(async (apartment) => {
 		// 	const isSent = sentApartments.some(sentApartment => apartment.exposeeId === sentApartment.house_id)
-		//
 		// 	if (!isSent) {
-		// 		// console.log(user)
-		// 		// если не отправлено
-		// 		// отправляем
-		// 		// console.log(apartment)
-		// 		// let token = await getToken()
-		// 		// console.log(token)
-		//
-		// 		sendRequest()
-		//
-		// 		console.log('Квартира: ' + apartment.exposeeId + ' отправляем')
-		// 	} else {
-		// 		console.log('Квартира: ' + apartment.exposeeId + ' не отправлен')
+		// 		await sendRequest(user, apartment.exposeeId, apartment.detailUrl)
 		// 	}
 		// }))
 	}))
+	console.log('Все заявки отправлены')
 }
 
 module.exports = {
