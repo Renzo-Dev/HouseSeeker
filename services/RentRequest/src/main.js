@@ -1,18 +1,18 @@
-// setInterval(async () => {
-// const sendApartmentRequest = require('./services/RentRequestApi')
-// await sendApartmentRequest()
-// }, 15000)
-
-
-(async () => {
-	const {sendApartmentRequest} = require('./services/apartmentService')
-	await sendApartmentRequest()
-})()
-
-
-// setTimeout(async () => {
-// 	const getToken = require('./services/getToken')
-// 	let token = await getToken()
+// let full = false
 //
-// 	console.log('Token: ', token)
-// }, 1000)
+// setInterval(async () => {
+// 	console.clear()
+// 	console.log('send request')
+// 	const {sendApartmentRequest} = require('./services/apartmentService')
+// 	await sendApartmentRequest()
+// }, 300000)
+
+const {sendApartmentRequest} = require('./services/apartmentService')
+
+let full = false
+setInterval(async () => {
+	if (!full) {
+		full = true
+		full = await sendApartmentRequest()
+	}
+}, 15000)

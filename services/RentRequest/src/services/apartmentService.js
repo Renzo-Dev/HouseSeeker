@@ -1,12 +1,17 @@
 const axios = require('axios')
+const sendRequest = require('./requestService')
 
 async function filterApartments(apartments, minPrice, maxPrice, minRooms, maxRooms) {
 	// Фильтруем квартиры более оптимально (отсекаем сразу ненужные записи)
 	return apartments.filter(item => {
+		const hasEquipment = item.equipment || ''
+		const hasEquipmentAsString = item.equipmentAsString || ''
+		const hasTitle = item.title || ''
+		
 		if (
-			!item.equipment?.includes('WG geeignet') &&
-			!item.equipmentAsString?.includes('WG geeignet') &&
-			!item.title?.toLowerCase().includes('tauschwohnung') &&
+			!hasEquipment.includes('WG geeignet') &&
+			!hasEquipmentAsString.includes('WG geeignet') &&
+			!hasTitle.toLowerCase().includes('tauschwohnung') &&
 			item.priceRaw >= minPrice &&
 			item.priceRaw <= maxPrice &&
 			item.rooms >= minRooms &&
@@ -106,14 +111,15 @@ async function sendApartmentRequest() {
 	const users = await Promise.all(
 		subscribes.map(subscribe => getUserByUserId(subscribe.user_id))
 	)
-
+	
+	console.log(users.length)
+	
 	// Обрабатываем пользователей (параллелим основной поток)
 	await Promise.all(users.map(async (user) => {
 		if (!user) return
-		console.log(user)
+		
 		// получаем локацию соответствии с городом
 		let locationData = await getLocationForUser(user.city)
-		
 		// Получаем ранее отправленные квартиры пользователем
 		let sentApartments = await getAllSentRequests(user.id)
 		
@@ -132,20 +138,13 @@ async function sendApartmentRequest() {
 		})
 		console.log(newApartments.length)
 		// отправляем новые квартиры
-		await Promise.all(newApartments.map(apartment => sendRequest(user,apartment)))
+		// await Promise.all(newApartments.map(apartment => sendRequest(user, apartment, locationData.location.id, locationData.cookie)))
 		
-		// // const {addSentRequest} = require('./database/repository/sent_requestsRepository')
-		// // await addSentRequest(user.id, apartments[12].exposeeId, apartments[12].detailUrl)
-		// console.log(apartments.length)
-		// // отправляем заявки (проверяем квартиру со списком квартир отправленных пользователем)
-		// await Promise.all(apartments.map(async (apartment) => {
-		// 	const isSent = sentApartments.some(sentApartment => apartment.exposeeId === sentApartment.house_id)
-		// 	if (!isSent) {
-		// 		await sendRequest(user, apartment.exposeeId, apartment.detailUrl)
-		// 	}
-		// }))
-	}))
+		for (const apartment of newApartments) {
+			await sendRequest(user, apartment, locationData.location.id, locationData.cookie)
+		}	}))
 	console.log('Все заявки отправлены')
+	return false
 }
 
 module.exports = {

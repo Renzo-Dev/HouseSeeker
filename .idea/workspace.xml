@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8d1fc0d-a70b-4a4c-8df5-b178df9e2747" name="Changes" comment="Remove RecaptchaServer module and enhance apartment filtering&#10;&#10;The RecaptchaServer module was removed, simplifying the system. Apartment filtering logic was improved for better performance and unnecessary imports were cleaned up. Additionally, request handling has been optimized with better token management and logging for failed requests.">
+    <list default="true" id="a8d1fc0d-a70b-4a4c-8df5-b178df9e2747" name="Changes" comment="Refactor request handling and authentication logic.&#10;&#10;Enhanced request handling by integrating location and cookie data, improving token retrieval with Puppeteer in `authService`, and updating database logging in `requestService`. Removed redundant code and streamlined error handling for better clarity and performance.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/RentRequest/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/RentRequest/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/RentRequest/src/services/apartmentService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/services/apartmentService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/RentRequest/src/services/authService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/services/authService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/RentRequest/src/services/requestService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/RentRequest/src/services/requestService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -282,6 +285,11 @@
       <workItem from="1742232636074" duration="11034000" />
       <workItem from="1742243692635" duration="29000" />
       <workItem from="1742243803453" duration="43000" />
+      <workItem from="1742243852218" duration="81000" />
+      <workItem from="1742246393018" duration="4717000" />
+      <workItem from="1742315716218" duration="601000" />
+      <workItem from="1742316328429" duration="13542000" />
+      <workItem from="1742336135952" duration="3116000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor user and subscription logic; enhance bot features.&#10;&#10;Streamlined user and subscription handling with new services, repositories, and API endpoints. Improved bot structure by adding user management scenes and enhanced start/subscribe command logic to integrate subscription verification. Removed unused migrations and refined user data models.">
       <option name="closed" value="true" />
@@ -379,7 +387,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742243710672</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="fix">
+      <option name="closed" value="true" />
+      <created>1742243925152</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1742243925152</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -390,7 +406,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Refactor user and subscription logic; enhance bot features.&#10;&#10;Streamlined user and subscription handling with new services, repositories, and API endpoints. Improved bot structure by adding user management scenes and enhanced start/subscribe command logic to integrate subscription verification. Removed unused migrations and refined user data models." />
-    <MESSAGE value="fix" />
     <MESSAGE value="Remove Laravel Rent-API directory and update bot dependencies&#10;&#10;Deleted all files related to the Laravel Rent-API project. Updated bot dependencies by adding `node-fetch` and integrating functions for reCAPTCHA token handling in the start command handler." />
     <MESSAGE value="Add IDE-specific configuration and diagram backup files&#10;&#10;This commit includes IntelliJ IDEA project configuration files (vcs.xml, workspace.xml) and a draw.io diagram backup file. These files are useful for project setup, version control configuration, and preserving diagram progress." />
     <MESSAGE value="Refactor bot start command and extract apartment services&#10;&#10;Moved" />
@@ -400,6 +415,7 @@
     <MESSAGE value="Replace Nginx with Express-based microservices&#10;&#10;Transitioned from Nginx to modular Express services for improved scalability and maintainability. Added a RentRequestor service with database models, request handling logic, and enhanced API functionality. Updated Docker configurations and structured the project for independent service deployments." />
     <MESSAGE value="up" />
     <MESSAGE value="Remove RecaptchaServer module and enhance apartment filtering&#10;&#10;The RecaptchaServer module was removed, simplifying the system. Apartment filtering logic was improved for better performance and unnecessary imports were cleaned up. Additionally, request handling has been optimized with better token management and logging for failed requests." />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove RecaptchaServer module and enhance apartment filtering&#10;&#10;The RecaptchaServer module was removed, simplifying the system. Apartment filtering logic was improved for better performance and unnecessary imports were cleaned up. Additionally, request handling has been optimized with better token management and logging for failed requests." />
+    <MESSAGE value="fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
 </project>

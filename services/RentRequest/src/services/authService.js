@@ -1,3 +1,5 @@
+const puppeteer = require('puppeteer')
+
 /**
  * Retrieves a token by interacting with a reCAPTCHA service using Puppeteer.
  * The function launches a headless browser, navigates to the reCAPTCHA server URL,
@@ -45,6 +47,7 @@ async function getToken() {
 			return grecaptcha.execute('6LdqZvcZAAAAAO2mSKVf_YfxeogksV9ZXL8wG-uC', {action: 'submit'})
 		})
 		
+		
 		setTimeout(async () => {
 			await browser.close()
 		}, 1000)
@@ -56,7 +59,8 @@ async function getToken() {
 	}
 }
 
-module.exports = getToken
+
+module.exports = {getToken}
 
 // async function getToken() {
 // 	const puppeteer = require('puppeteer')
