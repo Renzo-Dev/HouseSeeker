@@ -90,6 +90,8 @@ async function getUserByTgId(telegram_id) {
 		}
 	} catch (err) {
 		console.log('Error checking user by telegram_id: ', err.message)
+	} finally {
+		await knex.destroy()
 	}
 }
 
@@ -111,6 +113,8 @@ async function getUserByUserId(user_id) {
 		}
 	} catch (err) {
 		console.log('Error checking user by telegram_id: ', err.message)
+	} finally {
+		await knex.destroy()
 	}
 }
 
@@ -118,5 +122,5 @@ module.exports = {
 	addUser,
 	checkUserExists,
 	getUserByTgId,
-	getUserByUserId,
+	getUserByUserId
 }

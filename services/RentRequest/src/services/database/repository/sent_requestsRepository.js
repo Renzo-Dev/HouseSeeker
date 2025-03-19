@@ -2,7 +2,14 @@
 async function getAllSentRequests(user_id) {
 	const knex = require('knex')(require('../../../knexfile').development)
 	// return knex('sent_requests').where('user_id', user_id).select('house_id')
-	return knex('sent_requests').where('user_id', user_id) || []
+	try {
+		return await knex('sent_requests').where('user_id', user_id) || []
+	} catch (error) {
+		console.error('Error retrieving sent requests:', error)
+		throw error
+	} finally {
+		await knex.destroy()
+	}
 }
 
 async function addSentRequest(user_id, house_id, link) {
@@ -17,6 +24,8 @@ async function addSentRequest(user_id, house_id, link) {
 	} catch (error) {
 		console.error('Error adding sent request:', error)
 		throw error
+	} finally {
+		await knex.destroy()
 	}
 }
 
