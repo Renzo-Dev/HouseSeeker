@@ -21,6 +21,7 @@ const subscribeScene = new Scenes.WizardScene(
 	
 	// Last Name
 	async (ctx) => {
+		msg = new Locales(ctx.from.language_code).getSection('subscribe')
 		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
 		
 		ctx.scene.state.userData.name = ctx.message.text
@@ -34,9 +35,9 @@ const subscribeScene = new Scenes.WizardScene(
 		})
 		return ctx.wizard.next()
 	},
-	
 	// Phone number
 	async (ctx) => {
+		msg = new Locales(ctx.from.language_code).getSection('subscribe')
 		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
 		if (ctx.message.text === msg.buttons.back) {
 			await ctx.reply(msg.steps['1'], {
@@ -61,7 +62,9 @@ const subscribeScene = new Scenes.WizardScene(
 		})
 		return ctx.wizard.next()
 	},
+	// Email
 	async (ctx) => {
+		msg = new Locales(ctx.from.language_code).getSection('subscribe')
 		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
 		if (ctx.message.text === msg.buttons.back) {
 			await ctx.reply(msg.steps['2'])
@@ -79,8 +82,9 @@ const subscribeScene = new Scenes.WizardScene(
 		})
 		return ctx.wizard.next()
 	},
-	
+	// Min Price
 	async (ctx) => {
+		msg = new Locales(ctx.from.language_code).getSection('subscribe')
 		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
 		if (ctx.message.text === msg.buttons.back) {
 			await ctx.reply(msg.steps['3'])
@@ -98,8 +102,9 @@ const subscribeScene = new Scenes.WizardScene(
 		})
 		return ctx.wizard.next()
 	},
-	
+	// Max Price
 	async (ctx) => {
+		msg = new Locales(ctx.from.language_code).getSection('subscribe')
 		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
 		if (ctx.message.text === msg.buttons.back) {
 			await ctx.reply(msg.steps['4'])
@@ -117,7 +122,9 @@ const subscribeScene = new Scenes.WizardScene(
 		})
 		return ctx.wizard.next()
 	},
+	// Min Rooms
 	async (ctx) => {
+		msg = new Locales(ctx.from.language_code).getSection('subscribe')
 		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
 		if (ctx.message.text === msg.buttons.back) {
 			await ctx.reply(msg.steps['5'])
@@ -135,14 +142,16 @@ const subscribeScene = new Scenes.WizardScene(
 		})
 		return ctx.wizard.next()
 	},
+	// Max Rooms
 	async (ctx) => {
+		msg = new Locales(ctx.from.language_code).getSection('subscribe')
 		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
 		if (ctx.message.text === msg.buttons.back) {
 			await ctx.reply(msg.steps['6'])
 			return ctx.wizard.selectStep(6)
 		}
 		
-		ctx.scene.state.userData.rooms = ctx.message.text
+		ctx.scene.state.userData.minRooms = ctx.message.text
 		await ctx.reply(msg.steps['8'], {
 			parse_mode: 'Markdown',
 			reply_markup: {
@@ -153,14 +162,15 @@ const subscribeScene = new Scenes.WizardScene(
 		})
 		return ctx.wizard.next()
 	},
+	// City
 	async (ctx) => {
+		msg = new Locales(ctx.from.language_code).getSection('subscribe')
 		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
 		if (ctx.message.text === msg.buttons.back) {
 			await ctx.reply(msg.steps['7'])
 			return ctx.wizard.selectStep(7)
 		}
-		
-		ctx.scene.state.userData.city = ctx.message.text
+		ctx.scene.state.userData.maxRooms = ctx.message.text
 		await ctx.reply(msg.steps['9'], {
 			parse_mode: 'Markdown',
 			reply_markup: {
@@ -171,11 +181,31 @@ const subscribeScene = new Scenes.WizardScene(
 		})
 		return ctx.wizard.next()
 	},
+	// Description
 	async (ctx) => {
+		msg = new Locales(ctx.from.language_code).getSection('subscribe')
 		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
 		if (ctx.message.text === msg.buttons.back) {
 			await ctx.reply(msg.steps['8'])
 			return ctx.wizard.selectStep(8)
+		}
+		ctx.scene.state.userData.city = ctx.message.text
+		await ctx.reply(msg.steps['10'], {
+			parse_mode: 'Markdown',
+			reply_markup: {
+				keyboard: [[msg.buttons.back, msg.buttons.cancel]],
+				resize_keyboard: true,
+				one_time_keyboard: false
+			}
+		})
+		return ctx.wizard.next()
+	},
+	async (ctx) => {
+		msg = new Locales(ctx.from.language_code).getSection('subscribe')
+		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
+		if (ctx.message.text === msg.buttons.back) {
+			await ctx.reply(msg.steps['9'])
+			return ctx.wizard.selectStep(9)
 		}
 		
 		ctx.scene.state.userData.description = ctx.message.text
@@ -187,7 +217,8 @@ const subscribeScene = new Scenes.WizardScene(
 			.replace('{phone}', ctx.scene.state.userData.phone || '❌')
 			.replace('{minPrice}', ctx.scene.state.userData.minPrice || '❌')
 			.replace('{maxPrice}', ctx.scene.state.userData.maxPrice || '❌')
-			.replace('{rooms}', ctx.scene.state.userData.rooms || '❌')
+			.replace('{minRooms}', ctx.scene.state.userData.minRooms || '❌')
+			.replace('{maxRooms}', ctx.scene.state.userData.maxRooms || '❌')
 			.replace('{city}', ctx.scene.state.userData.city || '❌')
 			.replace('{description}', ctx.scene.state.userData.description || '❌')
 		
@@ -210,7 +241,7 @@ const subscribeScene = new Scenes.WizardScene(
 			// ПОДТВЕРЖДАЕМ И ПЕРЕХОДИМ НА СЛЕД ШАГ ЭТО ГЕНЕРАЦИЯ ССЫЛКИ ДЛЯ ОПЛАТЫ
 		}
 		if (ctx.message.text === msg.buttons.back) {
-			await ctx.reply(msg.steps['9'], {
+			await ctx.reply(msg.steps['10'], {
 				parse_mode: 'Markdown',
 				reply_markup: {
 					keyboard: [[msg.buttons.back, msg.buttons.cancel]],
@@ -218,7 +249,7 @@ const subscribeScene = new Scenes.WizardScene(
 					one_time_keyboard: false
 				}
 			})
-			return ctx.wizard.selectStep(9)
+			return ctx.wizard.selectStep(10)
 		}
 	}
 )
