@@ -1,5 +1,4 @@
 const axios = require('axios')
-const sendRequest = require('./requestService')
 
 async function filterApartments(apartments, minPrice, maxPrice, minRooms, maxRooms) {
 	// Фильтруем квартиры более оптимально (отсекаем сразу ненужные записи)

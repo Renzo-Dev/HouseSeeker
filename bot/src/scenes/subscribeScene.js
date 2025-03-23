@@ -236,6 +236,7 @@ const subscribeScene = new Scenes.WizardScene(
 		return ctx.wizard.next()
 	},
 	async (ctx) => {
+		msg = new Locales(ctx.from.language_code).getSection('subscribe')
 		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
 		if (ctx.message.text === msg.buttons.confirm) {
 			// ПОДТВЕРЖДАЕМ И ПЕРЕХОДИМ НА СЛЕД ШАГ ЭТО ГЕНЕРАЦИЯ ССЫЛКИ ДЛЯ ОПЛАТЫ
