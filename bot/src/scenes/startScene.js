@@ -1,13 +1,21 @@
-const {Scenes} = require('telegraf')
 const Locales = require('../utils/locales')
-const exitScene = require('./exitScene')
-let msg = {}
-
+const {Scenes} = require('telegraf')
 const startScene = new Scenes.WizardScene(
 	'startScene',
 	async (ctx) => {
-		// Определяем язык пользователя, если не найден, ставим английский по умолчанию
-		msg = new Locales(ctx.from.language_code).getSection('start')
+		try {
+			const locales = new Locales(ctx.from.language_code)
+			msg = locales.getSection('start')
+			
+			if (!msg || !msg.welcome || !msg.cancel || !msg.continue) {
+				throw new Error('Локализация неполная или отсутствует')
+			}
+		} catch (err) {
+			console.error('❌ Ошибка загрузки локализации для startScene:', err.message)
+			await ctx.reply('Произошла ошибка локализации. Попробуйте позже.')
+			return ctx.scene.leave()
+		}
+		
 		await ctx.reply(msg.welcome, {
 			parse_mode: 'HTML',
 			reply_markup: {
@@ -18,6 +26,7 @@ const startScene = new Scenes.WizardScene(
 		})
 		return ctx.wizard.next()
 	},
+	
 	async (ctx) => {
 		msg = new Locales(ctx.from.language_code).getSection('start')
 		if (ctx.message.text === msg.cancel) return exitScene(ctx)
@@ -26,5 +35,3 @@ const startScene = new Scenes.WizardScene(
 		}
 	}
 )
-
-module.exports = startScene

@@ -33,9 +33,13 @@ class Commands {
 				})
 			})
 			console.log('\n✅ Commands loaded...')
-			this.bot.hears(/^\/sub.*/, (ctx) => {
-				ctx.command = 'subscribe'
-				this.commands.find(({command}) => command === 'subscribe').action(ctx)
+			this.bot.hears(/^\/sub.*/, async (ctx) => {
+				try {
+					ctx.command = 'subscribe'
+					await this.commands.find(({command}) => command === 'subscribe').action(ctx)
+				} catch (err) {
+					console.error('⚠️ Ошибка в команде /sub:', err)
+				}
 			})
 		} catch (err) {
 			console.log('❌ Error loading commands...\n' + err.message)

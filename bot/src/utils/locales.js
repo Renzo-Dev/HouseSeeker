@@ -1,5 +1,6 @@
 const {resolve} = require('node:path')
 const {readFileSync} = require('node:fs')
+const path = require('node:path')
 
 class Locales {
 	locales = []
@@ -10,7 +11,7 @@ class Locales {
 			if (!['en', 'ru', 'de'].includes(language)) {
 				language = 'en'
 			}
-			const filePath = resolve(`src/locales/${language}.json`)
+			const filePath = path.resolve(__dirname, '..', 'locales', `${language}.json`)
 			this.locales = JSON.parse(readFileSync(filePath, 'utf-8'))
 		} catch (err) {
 			console.error('❌ Ошибка при загрузке сообщений:', err)

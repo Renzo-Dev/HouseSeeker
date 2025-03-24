@@ -17,7 +17,7 @@ services:
   tg_bot:
     build:
       context: bot
-      dockerfile: Dockerfile
+      dockerfile: bot/src/Dockerfile
     container_name: telegram_BOT
     volumes:
       - ./bot:/app
