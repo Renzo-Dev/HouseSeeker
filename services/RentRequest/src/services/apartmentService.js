@@ -92,14 +92,13 @@ async function getLocationForUser(query) {
 }
 
 async function sendApartmentRequest() {
-	const {getActiveSubscribes} = require('./database/repository/subscribeRepository')
 	const {getUserByUserId} = require('./database/repository/userRequests')
 	const {getAllSentRequests} = require('./database/repository/sent_requestsRepository')
 	const sendRequest = require('./requestService')
 
 // делаем запрос в бд
-// получаем активные подписки
-	let subscribes = await getActiveSubscribes()
+// получаем активные подписки из Subscribes service
+	let subscribes = await axios.get('http://localhost:7000/getActiveSubscribes').then(res => res.data)
 	// если подписки есть, продолжаем
 	if (!subscribes || subscribes.length === 0) {
 		console.log('В базе данных нету подписок')
@@ -141,7 +140,8 @@ async function sendApartmentRequest() {
 		
 		for (const apartment of newApartments) {
 			await sendRequest(user, apartment, locationData.location.id, locationData.cookie)
-		}	}))
+		}
+	}))
 	console.log('Все заявки отправлены')
 	return false
 }

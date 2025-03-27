@@ -32,7 +32,6 @@ class Commands {
 					await action(ctx)
 				})
 			})
-			console.log('\n✅ Commands loaded...')
 			this.bot.hears(/^\/sub.*/, async (ctx) => {
 				try {
 					ctx.command = 'subscribe'
@@ -41,6 +40,7 @@ class Commands {
 					console.error('⚠️ Ошибка в команде /sub:', err)
 				}
 			})
+			console.log('\n✅ Commands loaded...')
 		} catch (err) {
 			console.log('❌ Error loading commands...\n' + err.message)
 		}

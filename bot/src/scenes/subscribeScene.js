@@ -1,6 +1,7 @@
 const {Scenes} = require('telegraf')
 const exitScene = require('./exitScene')
 const Locales = require('../utils/locales')
+const generateFreeKassaSignature = require('../utils/FreeKassa')
 let msg
 const subscribeScene = new Scenes.WizardScene(
 	'subscribeScene',
@@ -22,7 +23,7 @@ const subscribeScene = new Scenes.WizardScene(
 	// Last Name
 	async (ctx) => {
 		msg = new Locales(ctx.from.language_code).getSection('subscribe')
-		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
+		if (ctx.message && ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
 		
 		ctx.scene.state.userData.name = ctx.message.text
 		await ctx.reply(msg.steps['2'], {
@@ -38,8 +39,8 @@ const subscribeScene = new Scenes.WizardScene(
 	// Phone number
 	async (ctx) => {
 		msg = new Locales(ctx.from.language_code).getSection('subscribe')
-		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
-		if (ctx.message.text === msg.buttons.back) {
+		if (ctx.message && ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
+		if (ctx.message && ctx.message.text === msg.buttons.back) {
 			await ctx.reply(msg.steps['1'], {
 				parse_mode: 'Markdown',
 				reply_markup: {
@@ -65,8 +66,8 @@ const subscribeScene = new Scenes.WizardScene(
 	// Email
 	async (ctx) => {
 		msg = new Locales(ctx.from.language_code).getSection('subscribe')
-		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
-		if (ctx.message.text === msg.buttons.back) {
+		if (ctx.message && ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
+		if (ctx.message && ctx.message.text === msg.buttons.back) {
 			await ctx.reply(msg.steps['2'])
 			return ctx.wizard.selectStep(2)
 		}
@@ -85,8 +86,8 @@ const subscribeScene = new Scenes.WizardScene(
 	// Min Price
 	async (ctx) => {
 		msg = new Locales(ctx.from.language_code).getSection('subscribe')
-		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
-		if (ctx.message.text === msg.buttons.back) {
+		if (ctx.message && ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
+		if (ctx.message && ctx.message.text === msg.buttons.back) {
 			await ctx.reply(msg.steps['3'])
 			return ctx.wizard.selectStep(3)
 		}
@@ -105,8 +106,8 @@ const subscribeScene = new Scenes.WizardScene(
 	// Max Price
 	async (ctx) => {
 		msg = new Locales(ctx.from.language_code).getSection('subscribe')
-		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
-		if (ctx.message.text === msg.buttons.back) {
+		if (ctx.message && ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
+		if (ctx.message && ctx.message.text === msg.buttons.back) {
 			await ctx.reply(msg.steps['4'])
 			return ctx.wizard.selectStep(4)
 		}
@@ -125,8 +126,8 @@ const subscribeScene = new Scenes.WizardScene(
 	// Min Rooms
 	async (ctx) => {
 		msg = new Locales(ctx.from.language_code).getSection('subscribe')
-		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
-		if (ctx.message.text === msg.buttons.back) {
+		if (ctx.message && ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
+		if (ctx.message && ctx.message.text === msg.buttons.back) {
 			await ctx.reply(msg.steps['5'])
 			return ctx.wizard.selectStep(5)
 		}
@@ -145,8 +146,8 @@ const subscribeScene = new Scenes.WizardScene(
 	// Max Rooms
 	async (ctx) => {
 		msg = new Locales(ctx.from.language_code).getSection('subscribe')
-		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
-		if (ctx.message.text === msg.buttons.back) {
+		if (ctx.message && ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
+		if (ctx.message && ctx.message.text === msg.buttons.back) {
 			await ctx.reply(msg.steps['6'])
 			return ctx.wizard.selectStep(6)
 		}
@@ -165,8 +166,8 @@ const subscribeScene = new Scenes.WizardScene(
 	// City
 	async (ctx) => {
 		msg = new Locales(ctx.from.language_code).getSection('subscribe')
-		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
-		if (ctx.message.text === msg.buttons.back) {
+		if (ctx.message && ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
+		if (ctx.message && ctx.message.text === msg.buttons.back) {
 			await ctx.reply(msg.steps['7'])
 			return ctx.wizard.selectStep(7)
 		}
@@ -184,8 +185,8 @@ const subscribeScene = new Scenes.WizardScene(
 	// Description
 	async (ctx) => {
 		msg = new Locales(ctx.from.language_code).getSection('subscribe')
-		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
-		if (ctx.message.text === msg.buttons.back) {
+		if (ctx.message && ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
+		if (ctx.message && ctx.message.text === msg.buttons.back) {
 			await ctx.reply(msg.steps['8'])
 			return ctx.wizard.selectStep(8)
 		}
@@ -202,8 +203,8 @@ const subscribeScene = new Scenes.WizardScene(
 	},
 	async (ctx) => {
 		msg = new Locales(ctx.from.language_code).getSection('subscribe')
-		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
-		if (ctx.message.text === msg.buttons.back) {
+		if (ctx.message && ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
+		if (ctx.message && ctx.message.text === msg.buttons.back) {
 			await ctx.reply(msg.steps['9'])
 			return ctx.wizard.selectStep(9)
 		}
@@ -237,11 +238,29 @@ const subscribeScene = new Scenes.WizardScene(
 	},
 	async (ctx) => {
 		msg = new Locales(ctx.from.language_code).getSection('subscribe')
-		if (ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
-		if (ctx.message.text === msg.buttons.confirm) {
+		if (ctx.message && ctx.message.text === msg.buttons.cancel) return exitScene(ctx)
+		if (ctx.message && ctx.message.text === msg.buttons.confirm) {
 			// ПОДТВЕРЖДАЕМ И ПЕРЕХОДИМ НА СЛЕД ШАГ ЭТО ГЕНЕРАЦИЯ ССЫЛКИ ДЛЯ ОПЛАТЫ
+			const shopId = '60798'
+			const secret = '3N8S5M0W51}a3B?'
+			const currency = 'UAH'
+			const amount = 501.00 // или ctx.scene.state.userData.amount
+			const orderId = `${ctx.from.id}_${Date.now()}`
+			const signature = generateFreeKassaSignature(shopId, amount, secret, currency, orderId)
+			
+			const paymentUrl = `https://pay.freekassa.ru/?m=${shopId}&oa=${amount}&o=${orderId}&s=${signature}&currency=${currency}`
+			
+			// добавляем данные в бд
+			
+			let userData = JSON.stringify(ctx.scene.state.userData)
+			// console.log(userData)
+			
+			await ctx.reply(`💳 Вот ссылка для оплаты:\n[Оплатить ${amount} ${currency}](${paymentUrl})`, {
+				parse_mode: 'Markdown',
+				disable_web_page_preview: true
+			})
 		}
-		if (ctx.message.text === msg.buttons.back) {
+		if (ctx.message && ctx.message.text === msg.buttons.back) {
 			await ctx.reply(msg.steps['10'], {
 				parse_mode: 'Markdown',
 				reply_markup: {

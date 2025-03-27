@@ -1,5 +1,6 @@
 const Locales = require('../utils/locales')
 const {Scenes} = require('telegraf')
+const exitScene = require('./exitScene')
 const startScene = new Scenes.WizardScene(
 	'startScene',
 	async (ctx) => {
@@ -35,3 +36,5 @@ const startScene = new Scenes.WizardScene(
 		}
 	}
 )
+
+module.exports = startScene

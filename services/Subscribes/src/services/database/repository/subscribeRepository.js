@@ -1,4 +1,4 @@
-async function addSubscribe(telegram_id) {
+async function addSubscribe(data) {
 
 }
 
