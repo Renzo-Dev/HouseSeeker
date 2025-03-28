@@ -1,7 +1,6 @@
 // const UserService = require('../../services/userService')
 
 async function subscribe(ctx) {
-	console.log('subscribe')
 	// let result = await UserService.checkUserExists(ctx.from.id)
 	// console.log(result)
 	// делаем есть ли аккаунт и подписка
