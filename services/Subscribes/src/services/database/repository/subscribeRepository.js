@@ -21,6 +21,7 @@ async function getActiveSubscribes() {
 }
 
 async function checkSubscribe(telegram_id) {
+	console.log(telegram_id);;
 	const knex = require('knex')(require('../../../knexfile').development)
 	try {
 		const user = await knex('users').where('telegram_id', telegram_id).first()
@@ -36,4 +37,4 @@ async function checkSubscribe(telegram_id) {
 module.exports = {
 	checkSubscribe,
 	getActiveSubscribes
-}
+};

@@ -20,8 +20,12 @@ app.get('/getActiveSubscribes', async (req, res) => {
 })
 
 app.get('/checkSubscribe', async (req, res) => {
-	// получаем всех подписчиков из бд
-	const user = await checkSubscribe()
+	// получаем teelgram_id из запроса
+	const telegram_id = req.query.telegram_id
+	console.log(telegram_id)
+	// проверяем есть ли пользователь в бд
+	const user = await checkSubscribe(telegram_id)
+	console.log(user)
 	res.send(user)
 })
 

@@ -5,7 +5,7 @@ class UserService {
 		try {
 			console.log('Response ' + telegram_id)
 			// const response = await axios.post('http://host.docker.internal:80/api/user/checkExists', {
-			const response = await axios.post('http://host.docker.internal:80/api/user/checkExists', {
+			const response = await axios.post('http://localhost:7000/', {
 				telegram_id: telegram_id
 			})
 			return response.data
