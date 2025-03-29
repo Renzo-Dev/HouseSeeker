@@ -1,9 +1,10 @@
 const axios = require('axios')
 
 class UserService {
-	static async checkUserExists(telegram_id) {
+	static async checkUserSub(telegram_id) {
 		try {
 			console.log('Response ' + telegram_id)
+			// const response = await axios.post('http://host.docker.internal:80/api/user/checkExists', {
 			const response = await axios.post('http://host.docker.internal:80/api/user/checkExists', {
 				telegram_id: telegram_id
 			})
@@ -16,6 +17,7 @@ class UserService {
 	
 	static async getUserDetails(telegram_id) {
 		try {
+			// const response = await axios.post('http://host.docker.internal:80/api/user/get', {
 			const response = await axios.post('http://host.docker.internal:80/api/user/get', {
 				telegram_id: telegram_id
 			})

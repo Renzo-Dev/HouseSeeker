@@ -1,0 +1,33 @@
+{
+  "sessions": [
+    {
+      "id": "897056725:897056725",
+      "data": {
+        "__scenes": {
+          "current": "subscribeScene",
+          "state": {
+            "userData": {
+              "name": "Dan",
+              "surname": "Koshevoy",
+              "phone": "Nikolaevich",
+              "email": "dankoshevoy@gmail.com",
+              "minPrice": "200",
+              "maxPrice": "700",
+              "minRooms": "1",
+              "maxRooms": "3",
+              "city": "Köln",
+              "description": "qweqeqe"
+            }
+          },
+          "cursor": 11
+        }
+      }
+    },
+    {
+      "id": "1107428782:1107428782",
+      "data": {
+        "__scenes": {}
+      }
+    }
+  ]
+}
