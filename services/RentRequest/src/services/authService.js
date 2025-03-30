@@ -11,6 +11,7 @@ async function getToken() {
 	const puppeteer = require('puppeteer')
 	try {
 		const browser = await puppeteer.launch({
+			executablePath: '/root/.cache/puppeteer/chrome/linux-136.0.7099.0/chrome-linux64/chrome',
 			headless: true,
 			args: ['--no-sandbox', '--disable-setuid-sandbox']
 		})
