@@ -1,7 +1,13 @@
+const dotenv = require('dotenv')
+dotenv.config({path: '../../../.env'})
 const express = require('express')
-const {getActiveSubscribes, checkSubscribe} = require('./services/database/repository/subscribeRepository')
+const {
+	getActiveSubscribes,
+	checkSubscribe
+} = require('./services/database/repository/subscribeRepository')
 const db = require('./services/database/db')
 const app = express()
+
 
 db.migrate.latest()
 	.then(() => {
@@ -29,6 +35,6 @@ app.get('/checkSubscribe', async (req, res) => {
 	res.send(user)
 })
 
-app.listen(7000, () => {
-	console.log('🚀 Сервер успешно запущен на порту 7000')
+app.listen(5000, () => {
+	console.log('🚀 Сервер успешно запущен на порту 5000')
 })

@@ -1,26 +1,52 @@
 version: '3.9'
 
 services:
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./services/nginx/nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - app_network
+    depends_on:
+      - rent_request_service
+      - subscribes_service
 
   rent_request_service:
     container_name: rent_request_service
     build:
       context: services/RentRequest
       dockerfile: Dockerfile
+    expose:
+      - "4000"
     volumes:
       - ./services/RentRequest/src:/app
-    ports:
-      - "4000:4000"
+    networks:
+      - app_network
+
+  subscribes_service:
+    container_name: subscribes_service
+    build:
+      context: services/Subscribes
+      dockerfile: Dockerfile
+    expose:
+      - "5000"
+    volumes:
+      - ./services/Subscribes/src:/app
     networks:
       - app_network
 
   tg_bot:
     build:
       context: bot
-      dockerfile: bot/src/Dockerfile
+      dockerfile: Dockerfile
     container_name: telegram_BOT
     volumes:
       - ./bot:/app
+    ports:
+      - "3000:3000"
     networks:
       - app_network
 
@@ -28,11 +54,9 @@ services:
     image: postgres:13
     container_name: postgres
     ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: rent
-      POSTGRES_PASSWORD: rent
-      POSTGRES_DB: rentdb
+      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
+    env_file:
+      - .env
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:

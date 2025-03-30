@@ -98,7 +98,8 @@ async function sendApartmentRequest() {
 
 // делаем запрос в бд
 // получаем активные подписки из Subscribes service
-	let subscribes = await axios.get('http://localhost:7000/getActiveSubscribes').then(res => res.data)
+// 	let subscribes = await axios.get('http://host.docker.internal:5000/getActiveSubscribes').then(res => res.data)
+	let subscribes = await axios.get('http://subscribes_service:5000/getActiveSubscribes').then(res => res.data)
 	// если подписки есть, продолжаем
 	if (!subscribes || subscribes.length === 0) {
 		console.log('В базе данных нету подписок')
