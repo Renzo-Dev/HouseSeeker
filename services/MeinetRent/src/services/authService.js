@@ -1,5 +1,3 @@
-const puppeteer = require('puppeteer')
-
 /**
  * Retrieves a token by interacting with a reCAPTCHA service using Puppeteer.
  * The function launches a headless browser, navigates to the reCAPTCHA server URL,
@@ -18,9 +16,7 @@ async function getToken() {
 		
 		const page = await browser.newPage()
 		
-		// await page.goto('http://recaptcha_server:3000/', {waitUntil: 'networkidle2'})
 		await page.goto('https://www.meinestadt.de/expose/22340207', {waitUntil: 'networkidle2'})
-		// await page.goto('http://recaptcha_server:3000/')
 		
 		await page.addScriptTag({url: 'https://www.google.com/recaptcha/api.js?render=6LdqZvcZAAAAAO2mSKVf_YfxeogksV9ZXL8wG-uC'})
 		

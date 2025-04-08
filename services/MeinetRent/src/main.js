@@ -18,11 +18,3 @@ db.migrate.latest()
 		console.error('❌ Ошибка при миграциях:', err)
 		process.exit(1)
 	})
-
-// let full = false
-// setInterval(async () => {
-// 	if (!full) {
-// 		full = true
-// 		full = await sendApartmentRequest()
-// 	}
-// }, 15000)

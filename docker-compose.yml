@@ -11,18 +11,19 @@ services:
     networks:
       - app_network
     depends_on:
-      - rent_request_service
+      - meinet-rent-services
       - subscribes_service
 
-  rent_request_service:
-    container_name: rent_request_service
+
+  meinet-rent-services:
+    container_name: meinet-rent-services
     build:
-      context: services/RentRequest
+      context: services/MeinetRent
       dockerfile: Dockerfile
     expose:
       - "4000"
     volumes:
-      - ./services/RentRequest/src:/app
+      - ./services/MeinetRent/src:/app
     networks:
       - app_network
 
