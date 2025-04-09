@@ -1,37 +1,6 @@
-const puppeteer = require('puppeteer')
-
-function delay(ms) {
-	return new Promise(resolve => setTimeout(resolve, ms))
-}
-
-function getRandomInt(min, max) {
-	return Math.floor(Math.random() * (max - min + 1)) + min
-}
-
-async function simulateHumanInteraction(page) {
-	console.log('🧠 Имитация человека начата...')
-	
-	for (let i = 0; i < 7; i++) {
-		const x = getRandomInt(50, 1000)
-		const y = getRandomInt(50, 700)
-		const steps = getRandomInt(5, 10)
-		await page.mouse.move(x, y, {steps})
-		await delay(getRandomInt(1500, 2000))
-	}
-	
-	console.log('📖 Человек читает страницу...')
-	await delay(getRandomInt(1000, 2000))
-	
-	for (let i = 0; i < 4; i++) {
-		const distance = getRandomInt(200, 600)
-		await page.evaluate(d => window.scrollBy(0, d), distance)
-		await delay(getRandomInt(500, 1000))
-	}
-	
-	await delay(getRandomInt(1000, 2000))
-}
-
 (async () => {
+	const {delay} = require('./services/simulateHuman')
+	const puppeteer = require('puppeteer')
 	const browser = await puppeteer.launch({
 		headless: true,
 		executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
@@ -80,6 +49,7 @@ async function simulateHumanInteraction(page) {
 	const numberOfHits = parseInt(data.paging.numberOfHits)
 	const totalPages = Math.ceil(numberOfHits / 50)
 	
+	// ПОЛУЧАЕМ СПИСОК КВАРТИР
 	let res = await page.evaluate(async (totalPages) => {
 		// Массив, в который будут собираться все квартиры со всех страниц
 		const allResults = []

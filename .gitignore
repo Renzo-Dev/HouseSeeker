@@ -2,3 +2,7 @@
 ./bot/.env
 ./bot/node_modules
 ./bot/package-lock.json
+./services/ImmoRent/node_modules
+./services/ImmoRent/package-lock.json
+./services/MeinetRent/node_modules
+./services/MeinetRent/package-lock.json
