@@ -1,4 +1,63 @@
-(async () => {
+;(async () => {
+	const {
+		getApartments,
+		filterApartments
+	} = require('./services/apartmentService')
+	
+	try {
+		const apartments = await getApartments()
+		console.log(apartments.length)
+	// 	const results = await Promise.all(
+	// 		apartments.map(async (apartment) => {
+	// 			const realEstate = apartment['resultlist.realEstate']
+	// 			// Безопасное извлечение значений
+	// 			const title = realEstate?.title || 'Без названия'
+	// 			const numberOfRooms = realEstate?.numberOfRooms ?? '—'
+	// 			const totalRent =
+	// 				realEstate?.calculatedTotalRent?.totalRent?.value ?? '—'
+	// 			const rentCurrency =
+	// 				realEstate?.calculatedTotalRent?.totalRent?.currency ?? ''
+	// 			return {
+	// 				title,
+	// 				numberOfRooms,
+	// 				totalRent,
+	// 				rentCurrency
+	// 			}
+	// 		})
+	// 	)
+	//
+	// 	// Вывод
+	// 	results.forEach(({title, numberOfRooms, totalRent, rentCurrency}) => {
+	// 		console.log(`🏠 ${title}`)
+	// 		console.log(`   Комнат: ${numberOfRooms}`)
+	// 		console.log(`   Общая аренда: ${totalRent} ${rentCurrency}\n`)
+	// 	})
+	} catch (error) {
+		console.error('Ошибка при получении квартир:', error)
+	}
+})()
+// const apartments = await getApartments()
+// for (const apartment of apartments) {
+// 	const realEstate = apartment['resultlist.realEstate']
+
+// 	const numberOfRooms = realEstate.numberOfRooms
+// 	const totalRent = realEstate.calculatedTotalRent?.totalRent?.value
+// 	const rentCurrency = realEstate.calculatedTotalRent?.totalRent?.currency
+
+// 	console.log(`🏠 ${realEstate.title}`)
+// 	console.log(`   Комнат: ${numberOfRooms}`)
+// 	console.log(`   Общая аренда: ${totalRent} ${rentCurrency}`)
+// }
+
+// apartments.forEach((apartment) => {
+// console.log(1)
+// })
+
+// const filteredApartments = filterApartments(apartments, 1000, 2000, 1, 2)
+// console.log(filteredApartments.length)
+// })()
+
+/* (async () => {
 	const {delay} = require('./services/simulateHuman')
 	const puppeteer = require('puppeteer')
 	const browser = await puppeteer.launch({
@@ -104,4 +163,4 @@
 	
 	await browser.close()
 	console.log('✅ Завершено.')
-})()
+})() */
