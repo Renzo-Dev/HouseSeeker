@@ -25,6 +25,7 @@
 	// 			}
 	// 		})
 	// 	)
+	
 	//
 	// 	// Вывод
 	// 	results.forEach(({title, numberOfRooms, totalRent, rentCurrency}) => {
