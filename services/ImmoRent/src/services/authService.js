@@ -3,7 +3,7 @@ async function getToken() {
 	const puppeteer = require('puppeteer')
 
 	const browser = await puppeteer.launch({
-		headless: false,
+		headless: true,
 		executablePath:
 			'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
 		args: [
@@ -40,14 +40,10 @@ async function getToken() {
 
 	const cookies = await page.cookies()
 	const cookieString = cookies.map((c) => `${c.name}=${c.value}`).join('; ')
-	// console.log('🍪 Cookie:', cookieString)
+	console.log('🍪 Cookie:', cookieString)
 
 	await browser.close()
 	return res
-	console.log('✅ Завершено.')
 }
 
-;(async () => {
-	let token = await getToken()
-	console.log(token)
-})()
+module.exports = { getToken, getCookie }
