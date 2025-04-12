@@ -1,18 +1,27 @@
-async function filterApartments(minPrice, maxPrice, minRooms, maxRooms) {
-	const apartments = await getApartments()
+async function filterApartments(
+	apartments,
+	minPrice,
+	maxPrice,
+	minRooms,
+	maxRooms
+) {
+	return apartments.filter((apartment) => {
+		const realEstate = apartment['resultlist.realEstate']
+		const price = realEstate?.price?.value
+		const rooms = realEstate?.numberOfRooms
 
-	return apartments.filter(apartment => {
-		const realEstate = apartment['resultlist.realEstate'];
-		const price = realEstate?.price?.value;
-		const rooms = realEstate?.numberOfRooms;
-		
 		// Проверка: цена должна быть в заданном диапазоне
-		return (price >= minPrice && price <= maxPrice) && (minRooms >= rooms && rooms <= maxRooms);
-	});
+		return (
+			price >= minPrice &&
+			price <= maxPrice &&
+			minRooms >= rooms &&
+			rooms <= maxRooms
+		)
+	})
 }
 
 async function getApartments() {
-	const {delay} = require('./simulateHuman')
+	const { delay } = require('./simulateHuman')
 	const puppeteer = require('puppeteer')
 	const browser = await puppeteer.launch({
 		headless: true,
@@ -21,31 +30,31 @@ async function getApartments() {
 		args: [
 			'--no-sandbox',
 			'--disable-setuid-sandbox',
-			'--disable-blink-features=AutomationControlled'
+			'--disable-blink-features=AutomationControlled',
 		],
-		ignoreDefaultArgs: ['--enable-automation']
+		ignoreDefaultArgs: ['--enable-automation'],
 	})
-	
+
 	const page = await browser.newPage()
 	await page.evaluateOnNewDocument(() => {
 		Object.defineProperty(navigator, 'webdriver', {
-			get: () => false
+			get: () => false,
 		})
 	})
-	
+
 	await page.setUserAgent(
 		'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
 	)
-	
+
 	console.clear()
 	console.log('🌍 Открытие страницы...')
 	await page.goto('https://www.immobilienscout24.de', {
-		waitUntil: 'domcontentloaded'
+		waitUntil: 'domcontentloaded',
 	})
-	
+
 	await delay(1000)
 	console.clear()
-	
+
 	const apartmentsData = []
 	const InitPage = await page.evaluate(async () => {
 		const res = await fetch(
@@ -54,9 +63,9 @@ async function getApartments() {
 				method: 'GET',
 				headers: {
 					Accept: 'application/json',
-					'Accept-Language': 'ru-RU,ru;q=0.5'
+					'Accept-Language': 'ru-RU,ru;q=0.5',
 				},
-				credentials: 'include'
+				credentials: 'include',
 			}
 		)
 		// Получаем данные с сайта и деструктурируем их для получения:
@@ -75,13 +84,13 @@ async function getApartments() {
 						pageSize,
 						numberOfHits,
 						numberOfPages,
-						numberOfListings
+						numberOfListings,
 					},
-					resultlistEntries: [{resultlistEntry: apartment}]
-				}
-			} = {}
+					resultlistEntries: [{ resultlistEntry: apartment }],
+				},
+			} = {},
 		} = await res.json()
-		
+
 		const data = {
 			searchId,
 			numberOfPages,
@@ -89,20 +98,20 @@ async function getApartments() {
 			pageSize,
 			numberOfHits,
 			numberOfListings,
-			apartment
+			apartment,
 		}
 		return data
 	})
-	
+
 	apartmentsData.push(InitPage)
-	
+
 	await delay(1000)
-	
+
 	// console.log(InitPage.numberOfPages, InitPage.pageSize)
-	
+
 	const apartmentPages = await page.evaluate(async (numbersOfPages) => {
 		const apartments = []
-		
+
 		for (let i = 2; i <= numbersOfPages; i++) {
 			const res = await fetch(
 				`https://www.immobilienscout24.de/Suche/de/nordrhein-westfalen/koeln/wohnung-mieten?pricetype=rentpermonth&pagenumber=${i}`,
@@ -110,12 +119,12 @@ async function getApartments() {
 					method: 'GET',
 					headers: {
 						Accept: 'application/json',
-						'Accept-Language': 'ru-RU,ru;q=0.5'
+						'Accept-Language': 'ru-RU,ru;q=0.5',
 					},
-					credentials: 'include'
+					credentials: 'include',
 				}
 			)
-			
+
 			const {
 				searchResponseModel: {
 					'resultlist.resultlist': {
@@ -125,11 +134,11 @@ async function getApartments() {
 							pageSize,
 							numberOfHits,
 							numberOfPages,
-							numberOfListings
+							numberOfListings,
 						},
-						resultlistEntries: [{resultlistEntry: apartment}]
-					}
-				} = {}
+						resultlistEntries: [{ resultlistEntry: apartment }],
+					},
+				} = {},
 			} = await res.json()
 			const data = {
 				searchId,
@@ -138,17 +147,17 @@ async function getApartments() {
 				pageSize,
 				numberOfHits,
 				numberOfListings,
-				apartment
+				apartment,
 			}
 			apartments.push(data)
 		}
 		return apartments
 	}, InitPage.numberOfPages)
-	
+
 	apartmentsData.push(...apartmentPages)
-	
+
 	await browser.close()
-	
+
 	return apartmentsData
 		.flatMap((page) => page.apartment)
 		.filter(
@@ -157,4 +166,4 @@ async function getApartments() {
 		)
 }
 
-module.exports = {filterApartments, getApartments}
+module.exports = { filterApartments, getApartments }
