@@ -1,7 +1,8 @@
 ;(async () => {
-	const { getApartments } = require('./services/apartmentService')
+	const { filterApartments } = require('./services/apartmentService')
 	try {
-		console.log(await getApartments())
+		let apartments = await filterApartments(500, 1000, 1, 2)
+		console.log(apartments.length)
 	} catch (error) {
 		console.error('Ошибка при получении квартир:', error)
 	}

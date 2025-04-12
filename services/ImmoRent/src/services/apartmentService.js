@@ -1,24 +1,14 @@
 async function filterApartments(minPrice, maxPrice, minRooms, maxRooms) {
 	const apartments = await getApartments()
-	
-	const results = await Promise.all(
-		apartments.map(async (apartment) => {
-			// Безопасное извлечение значений
-			const realEstate = apartment['resultlist.realEstate']
-			// проверяем количество комнат
-			const numberOfRooms = realEstate?.numberOfRooms ?? '—'
-			const totalRent = realEstate?.calculatedTotalRent?.totalRent?.value ?? '—'
-			
-			if (
-				numberOfRooms >= minRooms &&
-				numberOfRooms <= maxRooms &&
-				totalRent >= minPrice &&
-				totalRent <= maxPrice
-			) {
-				console.count()
-			}
-		})
-	)
+
+	return apartments.filter(apartment => {
+		const realEstate = apartment['resultlist.realEstate'];
+		const price = realEstate?.price?.value;
+		const rooms = realEstate?.numberOfRooms;
+		
+		// Проверка: цена должна быть в заданном диапазоне
+		return (price >= minPrice && price <= maxPrice) && (minRooms >= rooms && rooms <= maxRooms);
+	});
 }
 
 async function getApartments() {
@@ -108,7 +98,7 @@ async function getApartments() {
 	
 	await delay(1000)
 	
-	console.log(InitPage.numberOfPages, InitPage.pageSize)
+	// console.log(InitPage.numberOfPages, InitPage.pageSize)
 	
 	const apartmentPages = await page.evaluate(async (numbersOfPages) => {
 		const apartments = []
@@ -157,10 +147,14 @@ async function getApartments() {
 	
 	apartmentsData.push(...apartmentPages)
 	
-	console.log(apartmentsData)
-	console.log(apartmentsData.length)
 	await browser.close()
-	return []
+	
+	return apartmentsData
+		.flatMap((page) => page.apartment)
+		.filter(
+			(apartment) =>
+				apartment['resultlist.realEstate']?.privateOffer === 'false'
+		)
 }
 
 module.exports = {filterApartments, getApartments}
