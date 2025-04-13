@@ -1,3 +1,4 @@
 ./bot/src/node_modules
 ./services/ImmoRent/src/node_modules
 ./services/MeinetRent/src/node_modules
+.env

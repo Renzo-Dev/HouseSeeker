@@ -20,7 +20,7 @@ async function filterApartments(
 	})
 }
 
-async function getApartments() {
+async function getApartments(city) {
 	const { delay } = require('./simulateHuman')
 	const puppeteer = require('puppeteer')
 	const browser = await puppeteer.launch({
@@ -55,6 +55,8 @@ async function getApartments() {
 	await delay(1000)
 
 	const apartmentsData = []
+	const BASE_URL = 'https://www.immobilienscout24.de'
+	const SEARCH_URL = `${BASE_URL}/Suche/de/nordrhein-westfalen/koeln/wohnung-mieten?pricetype=rentpermonth`
 	const InitPage = await page.evaluate(async () => {
 		const res = await fetch(
 			'https://www.immobilienscout24.de/Suche/de/nordrhein-westfalen/koeln/wohnung-mieten?pricetype=rentpermonth',
@@ -103,10 +105,6 @@ async function getApartments() {
 	})
 
 	apartmentsData.push(InitPage)
-
-	// await delay(1000)
-
-	// console.log(InitPage.numberOfPages, InitPage.pageSize)
 
 	const apartmentPages = await page.evaluate(async (numbersOfPages) => {
 		const apartments = []
