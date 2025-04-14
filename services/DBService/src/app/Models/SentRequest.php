@@ -5,15 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Subscribe extends Model
+class SentRequest extends Model
 {
     use HasFactory;
 
-    protected $table = 'subscribes';
+    protected $table = 'sent_requests';
     protected $fillable = [
         'user_id',
-        'start_date',
-        'end_date',
-        'status',
+        'house_id',
+        'link'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
