@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('sent_requests', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('house_id');
+            $table->string('house_id')->unique();
             $table->string('link');
             $table->timestamps();
         });
