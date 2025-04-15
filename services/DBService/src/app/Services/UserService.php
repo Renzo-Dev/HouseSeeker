@@ -18,11 +18,11 @@ class UserService
 
     public function getUserByTelegramId(int $telegram_id): ?User
     {
-        return User::where('telegram_id', $telegram_id)->firstOrFail();
+        return User::where('telegram_id', $telegram_id)->first();
     }
 
     public function getUserById(int $user_id): ?User
     {
-        return User::where('id', $user_id)->firstOrFail();
+        return User::where('id', $user_id)->first();
     }
 }

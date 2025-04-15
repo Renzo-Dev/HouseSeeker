@@ -36,9 +36,9 @@ class SentRequestService
         return [];
     }
 
-    function getAllSentRequestsByUserId($id)
+    function getAllSentRequestsByUserId($user_id)
     {
-        $user = $this->userService->getUserById($id);
+        $user = $this->userService->getUserById($user_id);
         if ($user) {
             // Получаем все отправленные запросы для пользователя
             return $user->sent_requests;

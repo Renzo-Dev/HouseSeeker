@@ -12,10 +12,11 @@ return new class extends Migration {
     {
         Schema::create('subscribes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_id')->unique();
+            $table->unsignedBigInteger('user_id')->unique(); // Используем unsignedBigInteger для совместимости с Laravel
             $table->date('start_date');
             $table->date('end_date');
-            $table->string('status');
+            $table->boolean('status')->default(false);
+            $table->foreign('user_id')->references('id')->on('users')->ondelete('cascade');
             $table->timestamps();
         });
     }

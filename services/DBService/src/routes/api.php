@@ -11,4 +11,5 @@
 //});
 
 require_once 'User/userRoutes.php';
-require_once 'SentRequest/sentRequestRoutes.php';
+require_once 'Sent_requests/sentRequestRoutes.php';
+require_once 'Subscribes/subscribesRoutes.php';

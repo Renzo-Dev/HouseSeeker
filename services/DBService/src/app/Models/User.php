@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     use HasFactory;
+
     protected $table = 'users';
 
     protected $fillable = [
@@ -29,4 +30,8 @@ class User extends Model
         return $this->hasMany(SentRequest::class);
     }
 
+    public function subscribe()
+    {
+        return $this->hasOne(Subscribe::class, 'user_id');
+    }
 }
