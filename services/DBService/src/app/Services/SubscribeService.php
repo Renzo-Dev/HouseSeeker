@@ -29,7 +29,7 @@ class SubscribeService
     function getActiveSubscribes(): Collection|JsonResponse
     {
         try {
-            return Subscribe::all();
+            return Subscribe::where('status', true)->get();
         } catch (\Exception $exception) {
             return response()->json(['error' => 'Failed to retrieve subscribes'], 500);
         }

@@ -1,5 +1,5 @@
 const axios = require('axios')
-const {getAllSubscribes} = require('./database/repository/subscribesRepository')
+const {getActiveSubscribes} = require('./database/repository/subscribesRepository')
 
 async function filterApartments(apartments, minPrice, maxPrice, minRooms, maxRooms) {
 	// Фильтруем квартиры более оптимально (отсекаем сразу ненужные записи)
@@ -73,7 +73,6 @@ async function getLocationForUser(query) {
 	try {
 		const response = await axios.get(url, {params, headers})
 		const data = response.data
-		
 		const locations = data.flatMap(group => group.locations.filter(loc => loc.cityCenter) // Оставляем только те, у которых есть координаты
 			.map(loc => ({
 				id: loc.id,
@@ -82,19 +81,14 @@ async function getLocationForUser(query) {
 				latitude: loc.cityCenter.latitude
 			})))
 		const cookies = response.headers['set-cookie']
-		
-		const locationData = {
-			location: locations.find(location => location.name === query) || locations[0],
-			cookie: cookies
-		}
-		
-		if (locationData.location) {
-			return locationData
+		if (locations) {
+			return {
+				location: locations.find(location => location.name === query) || locations[0],
+				cookie: cookies
+			}
 		} else {
-			console.error('Локация не найдена для:', query)
 			return null
 		}
-		
 	} catch (error) {
 		console.error('Ошибка запроса:', error.response ? error.response.data : error.message)
 		return null
@@ -109,14 +103,15 @@ async function sendApartmentRequest() {
 	// делаем запрос в бд
 	// получаем активные подписки из Subscribes service
 	// 	let subscribes = await axios.get('http://host.docker.internal:5000/getActiveSubscribes').then(res => res.data)
-	let subscribes = await getAllSubscribes()
+	let subscribes = await getActiveSubscribes()
 	// если подписки есть, продолжаем
 	if (!subscribes || subscribes.length === 0) {
 		console.log('В базе данных нету подписок')
 		return
 	}
-	console.log('Загружено подписок: ' + subscribes.length)
-	
+	console.log(subscribes)
+	// console.log('Загружено подписок: ' + subscribes.length)
+	//
 	// Получаем пользователей по подпискам (параллельно)
 	const users = await Promise.all(
 		subscribes.map(subscribe => getUserByUserId(subscribe.user_id))
@@ -125,11 +120,11 @@ async function sendApartmentRequest() {
 	// Обрабатываем пользователей (параллелим основной поток)
 	await Promise.all(users.map(async (user) => {
 		if (!user) return
-		
 		// получаем локацию соответствии с городом
 		console.log(user.city)
+		
 		let locationData = await getLocationForUser(user.city)
-		console.log(locationData)
+		
 		if (!locationData) {
 			console.log('Локация не найдена для:', user.city)
 			return

@@ -91,7 +91,6 @@ async function sendRequest(user, apartment, location, cookie) {
 			})
 		} else {
 			console.error(`Ошибка отправки заявки для объекта ${apartment.exposeeId}:`, error.message)
-			// // Логируем ошибку, но продолжаем обработку других заявок
 		}
 	}
 }

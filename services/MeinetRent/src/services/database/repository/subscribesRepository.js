@@ -1,4 +1,4 @@
-async function getAllSubscribes() {
+async function getActiveSubscribes() {
 	const axios = require('axios')
 	return await axios.get('http://nginx/api/sub/getActiveSubscribes')
 		.then(res => res.data)
@@ -9,5 +9,5 @@ async function getAllSubscribes() {
 }
 
 module.exports = {
-	getAllSubscribes
+	getActiveSubscribes
 }

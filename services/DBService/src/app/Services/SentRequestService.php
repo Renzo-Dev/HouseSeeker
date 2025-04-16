@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Models\SentRequest;
+
 class SentRequestService
 {
     protected UserService $userService;
@@ -13,16 +15,16 @@ class SentRequestService
 
     function addSentRequest($data)
     {
-        $user = $this->userService->getUserById($data['user_id']);
-        if ($user) {
-            // Добавляем запрос в массив sent_requests
-            $user->sent_requests()->create([
+        try {
+            $sentData = [
+                'user_id' => $data['user_id'],
                 'house_id' => $data['house_id'],
                 'link' => $data['link'],
-            ]);
-            return $user;
+            ];
+            Sentrequest::create($sentData);
+        } catch (\Exception $e) {
+            throw new \Exception('Error adding sent request: ' . $e->getMessage());
         }
-        return null;
     }
 
     function getAllSentRequestsByTelegramId($telegram_id)

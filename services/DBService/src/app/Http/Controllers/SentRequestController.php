@@ -32,11 +32,17 @@ class SentRequestController extends Controller
 
     public function addSentRequest(Request $request)
     {
-        $data = $request->all();
+        try {
+            $data = $request->all();
 
-        $sentRequest = $this->sentRequestService->addSentRequest($data);
-        return response()->json([
-            'sent_request' => $sentRequest,
-        ]);
+            $this->sentRequestService->addSentRequest($data);
+            return response()->json([
+                'sent_request' => 'Sent request created successfully',
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'Sent request already exists'
+            ], 409);
+        }
     }
 }

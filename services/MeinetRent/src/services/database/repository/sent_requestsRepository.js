@@ -10,6 +10,16 @@ async function getAllSentRequests(user_id) {
 }
 
 async function addSentRequest(user_id, house_id, link) {
+	const axios = require('axios')
+	try {
+		await axios.post('http://nginx/api/sent', {
+			user_id: user_id,
+			house_id: house_id,
+			link: link
+		}).then(res => res.data)
+	} catch (err) {
+		console.error('Error adding sent request:', err)
+	}
 }
 
 module.exports = {
