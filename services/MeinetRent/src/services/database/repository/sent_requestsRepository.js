@@ -1,31 +1,24 @@
 // Retrieves all sent requests associated with a specific user ID.
 async function getAllSentRequests(user_id) {
-	const knex = require('knex')(require('../../../knexfile').development)
-	// return knex('sent_requests').where('user_id', user_id).select('house_id')
+	const axios = require('axios')
 	try {
-		return await knex('sent_requests').where('user_id', user_id) || []
-	} catch (error) {
-		console.error('Error retrieving sent requests:', error)
-		throw error
-	} finally {
-		await knex.destroy()
+		const sents = await axios.get(`http://nginx/api/sent/id/${user_id}`).then(res => res.data)
+		if (sents.sent_requests.length === 0) return [] || sents.sent_requests
+	} catch (err) {
+		console.error('Error fetching sent requests:', err)
 	}
 }
 
 async function addSentRequest(user_id, house_id, link) {
-	const knex = require('knex')(require('../../../knexfile').development)
+	const axios = require('axios')
 	try {
-		await knex('sent_requests').insert({
-			user_id,
-			house_id,
-			link
-		})
-		return true
-	} catch (error) {
-		console.error('Error adding sent request:', error)
-		throw error
-	} finally {
-		await knex.destroy()
+		await axios.post('http://nginx/api/sent', {
+			user_id: user_id,
+			house_id: house_id,
+			link: link
+		}).then(res => res.data)
+	} catch (err) {
+		console.error('Error adding sent request:', err)
 	}
 }
 

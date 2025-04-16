@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="rentdb@localhost" uuid="c27e9cbc-65bb-4dda-a90a-cad7c397631c">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/rentdb</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="rentdb@localhost [2]" uuid="166a8e95-9ced-4e7a-92d0-a4ae7ecf13b9">
+    <data-source source="LOCAL" name="rentdb@localhost" uuid="499e6b96-5e08-4469-937e-d8123dc5d48f">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
