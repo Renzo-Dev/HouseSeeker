@@ -20,7 +20,7 @@ async function sendRequest(user, apartment, location, cookie) {
 		lastname: user.last_name,
 		message: user.description,
 		captchaToken: captchaToken,
-		phone: '4915204395310'
+		phone: user.phone,
 	}
 	try {
 		// отправляем запрос
