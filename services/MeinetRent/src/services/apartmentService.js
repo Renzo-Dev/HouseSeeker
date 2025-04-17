@@ -109,7 +109,6 @@ async function sendApartmentRequest() {
 		console.log('В базе данных нету подписок')
 		return
 	}
-	console.log(subscribes)
 	// console.log('Загружено подписок: ' + subscribes.length)
 	//
 	// Получаем пользователей по подпискам (параллельно)
@@ -121,23 +120,22 @@ async function sendApartmentRequest() {
 	await Promise.all(users.map(async (user) => {
 		if (!user) return
 		// получаем локацию соответствии с городом
-		console.log(user.city)
 		
 		let locationData = await getLocationForUser(user.city)
-		
+
 		if (!locationData) {
 			console.log('Локация не найдена для:', user.city)
 			return
 		}
-		
+
 		// Получаем ранее отправленные квартиры пользователем
 		let sentApartments = await getAllSentRequests(user.id)
-		
+		// console.log(sentApartments)
 		// загружаем и фильтруем квартиры
 		const apartments = await getApartments(locationData.location, locationData.cookie)
 		const filtered = await filterApartments(apartments, user.min_price, user.max_price, user.min_rooms, user.max_rooms)
-		
-		
+
+
 		// исключаем уже отправленные квартиры
 		const newApartments = filtered.filter(apartment => {
 			const alreadySent = sentApartments.some(sent => sent.house_id === apartment.exposeeId)
@@ -146,7 +144,7 @@ async function sendApartmentRequest() {
 		console.log(newApartments.length)
 		// отправляем новые квартиры
 		// await Promise.all(newApartments.map(apartment => sendRequest(user, apartment, locationData.location.id, locationData.cookie)))
-		
+
 		for (const apartment of newApartments) {
 			await sendRequest(user, apartment, locationData.location.id, locationData.cookie)
 		}
