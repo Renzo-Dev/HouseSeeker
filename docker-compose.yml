@@ -26,6 +26,18 @@ services:
     networks:
       - app_network
 
+  immo-rent-services:
+    container_name: immo-rent-services
+    build:
+      context: services/ImmoRent
+      dockerfile: Dockerfile
+    expose:
+      - "6000"
+    volumes:
+      - ./services/ImmoRent/src:/app
+    networks:
+      - app_network
+
   tg_bot:
     build:
       context: bot
